@@ -1,0 +1,8 @@
+spring:
+    profiles:
+        active: local
+    application:
+        name: schedulecore
+
+server:
+    port: 3000
