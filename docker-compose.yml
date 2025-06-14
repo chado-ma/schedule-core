@@ -4,18 +4,18 @@ services:
     container_name: postgres
     environment:
       POSTGRES_USER: user
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: CAMPINGDB
+      POSTGRES_PASSWORD: local
+      POSTGRES_DB: SCHEDULEDB
     volumes:
       - ./backup/postgres/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: unless-stopped
     networks:
-      - local-network
+      - schedule-network
 
 networks:
-  local-network:
+  schedule-network:
     driver: bridge
 
 
