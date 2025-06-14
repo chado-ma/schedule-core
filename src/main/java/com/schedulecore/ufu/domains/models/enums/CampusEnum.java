@@ -12,12 +12,12 @@ public enum CampusEnum {
         this.description = description;
     }
 
-    CampusEnum valueOfDescription(String description) {
+    public static CampusEnum valueOfOrDefault(String name) {
         for (CampusEnum campus : CampusEnum.values()) {
-            if (campus.description.equalsIgnoreCase(description)) {
+            if (campus.name().equalsIgnoreCase(name)) {
                 return campus;
             }
         }
-        throw new IllegalArgumentException("No enum constant with description: " + description);
+        return null;
     }
 }

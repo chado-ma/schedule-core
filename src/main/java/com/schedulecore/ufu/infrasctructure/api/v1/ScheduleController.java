@@ -28,9 +28,7 @@ public class ScheduleController {
         return  getSchedules.get(GetSchedulesInput.builder()
                 .monthDay(MonthDay.of(request.getMonthDay(), request.getMonth()))
                 .month(Month.of(request.getMonth()))
-                .campus(!request.getCampus().isBlank() ?
-                        Optional.of(CampusEnum.valueOf(request.getCampus())) :
-                        Optional.empty())
+                .campus(Optional.ofNullable(CampusEnum.valueOfOrDefault(request.getCampus())))
                 .build());
     }
 }
