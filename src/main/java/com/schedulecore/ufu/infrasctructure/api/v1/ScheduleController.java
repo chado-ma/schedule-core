@@ -20,7 +20,7 @@ public class ScheduleController {
 
     @GetMapping("/teste")
     public String teste() {
-        return "Camping running";
+        return "Schedule UFU Core is running";
     }
 
     @GetMapping("/getSchedule")
