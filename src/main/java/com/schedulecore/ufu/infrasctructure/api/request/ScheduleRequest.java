@@ -9,7 +9,7 @@ import java.time.MonthDay;
 @Data
 @Builder
 public class ScheduleRequest {
-    @Builder.Default
-    private MonthDay monthDay = MonthDay.now();
-    private Month month = Month.MARCH;
+    private int monthDay;
+    private int  month;
+    private String Campus;
 }

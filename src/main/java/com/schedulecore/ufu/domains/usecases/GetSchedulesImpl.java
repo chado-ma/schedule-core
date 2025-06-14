@@ -1,5 +1,6 @@
 package com.schedulecore.ufu.domains.usecases;
 
+import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
 import com.schedulecore.ufu.domains.resourses.GetSchedules;
@@ -17,11 +18,8 @@ public class GetSchedulesImpl implements GetSchedules {
     private final DatabasePort databasePort;
 
     @Override
-    public ScheduleModel get(MonthDay monthDay, Month month) {
-        return ScheduleModel.builder()
-                .dayOfWeek(DayOfWeek.MONDAY)
-                .monthDay(MonthDay.now())
-                .time(List.of())
-                .build();
+    public ScheduleModel get(GetSchedulesInput input) {
+        return input.getCampus().map(campus -> databasePort.getSchedulesByCampusAndMonthAndDay(input.getMonth(), input.getMonthDay(), campus.name()))
+                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getMonth(), input.getMonthDay()));
     }
 }
