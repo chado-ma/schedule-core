@@ -25,7 +25,7 @@ public class ScheduleController {
     }
 
     @GetMapping("/getSchedule")
-    public List<ScheduleModel> getScheduleNow(ScheduleRequest request) {
+    public List<ScheduleModel> getScheduleNow(@RequestBody ScheduleRequest request) {
         return  getSchedules.get(GetSchedulesInput.builder()
                 .monthDay(MonthDay.of(request.getMonthDay(), request.getMonth()))
                 .month(Month.of(request.getMonth()))

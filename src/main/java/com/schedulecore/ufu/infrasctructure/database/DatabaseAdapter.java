@@ -27,7 +27,7 @@ public class DatabaseAdapter implements DatabasePort {
 
     @Override
     public List<ScheduleModel> getSchedulesByMonthAndDay(Month month, MonthDay monthDay) {
-        return reservaRepository.findAllData(monthDay)
+        return reservaRepository.findAllByData(monthDay)
                 .stream()
                 .map(ReservaEntity::toModel)
                 .toList();

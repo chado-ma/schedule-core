@@ -1,12 +1,16 @@
 package com.schedulecore.ufu.infrasctructure.api.request;
 
+
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
 public class ScheduleRequest {
-    private int monthDay;
-    private int  month;
-    private String Campus;
+    @NotNull
+    private Integer monthDay;
+    @NotNull
+    private Integer month;
+    private String campus;
 }

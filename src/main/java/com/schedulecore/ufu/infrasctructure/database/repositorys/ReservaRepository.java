@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
     List<ReservaEntity> findAllByCampusAndData(String campus, MonthDay data);
-    List<ReservaEntity> findAllData(MonthDay data);
+
+    List<ReservaEntity> findAllByData(MonthDay data);
+
     List<ReservaEntity> findAllByMatriculaAluno(String matricula);
 }
