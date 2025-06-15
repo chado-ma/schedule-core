@@ -2,26 +2,34 @@ package com.schedulecore.ufu.infrasctructure.database;
 
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
-import com.schedulecore.ufu.infrasctructure.database.repositorys.ReservaRepostiory;
+import com.schedulecore.ufu.infrasctructure.database.entitys.ReservaEntity;
+import com.schedulecore.ufu.infrasctructure.database.repositorys.ReservaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.Month;
 import java.time.MonthDay;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Component
 @RequiredArgsConstructor
 public class DatabaseAdapter implements DatabasePort {
-    private final ReservaRepostiory reservaRepostiory;
+    private final ReservaRepository reservaRepository;
     @Override
-    public ScheduleModel getSchedulesByCampusAndMonthAndDay(Month month, MonthDay monthDay, String campus) {
-        reservaRepostiory.findAll();
-        return ScheduleModel.builder().build();
+    public List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Month month, MonthDay monthDay, String campus) {
+        return reservaRepository.findAllByCampusAndData(campus, monthDay)
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
     }
 
     @Override
-    public ScheduleModel getSchedulesByMonthAndDay(Month month, MonthDay monthDay) {
-        return ScheduleModel.builder()
-                .build();
+    public List<ScheduleModel> getSchedulesByMonthAndDay(Month month, MonthDay monthDay) {
+        return reservaRepository.findAllData(monthDay)
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
     }
 }

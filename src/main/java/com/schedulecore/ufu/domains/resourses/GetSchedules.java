@@ -5,7 +5,8 @@ import com.schedulecore.ufu.domains.models.ScheduleModel;
 
 import java.time.Month;
 import java.time.MonthDay;
+import java.util.List;
 
 public interface GetSchedules {
-    ScheduleModel get(GetSchedulesInput input);
+    List<ScheduleModel> get(GetSchedulesInput input);
 }

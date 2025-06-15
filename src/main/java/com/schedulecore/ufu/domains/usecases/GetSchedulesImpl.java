@@ -7,9 +7,6 @@ import com.schedulecore.ufu.domains.resourses.GetSchedules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
-import java.time.Month;
-import java.time.MonthDay;
 import java.util.List;
 
 @Service
@@ -18,7 +15,7 @@ public class GetSchedulesImpl implements GetSchedules {
     private final DatabasePort databasePort;
 
     @Override
-    public ScheduleModel get(GetSchedulesInput input) {
+    public List<ScheduleModel> get(GetSchedulesInput input) {
         return input.getCampus().map(campus -> databasePort.getSchedulesByCampusAndMonthAndDay(input.getMonth(), input.getMonthDay(), campus.name()))
                 .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getMonth(), input.getMonthDay()));
     }

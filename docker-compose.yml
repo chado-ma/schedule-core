@@ -3,20 +3,24 @@ services:
     image: postgres:16.1-alpine
     container_name: postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: local
-      POSTGRES_DB: SCHEDULEDB
-    volumes:
-      - ./backup/postgres/data:/var/lib/postgresql/data
+      username: user
+      password: local
+      db: SCHEDULEDB
     ports:
       - "5432:5432"
     restart: unless-stopped
     networks:
       - schedule-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
 networks:
   schedule-network:
     driver: bridge
+
+volumes:
+  postgres-data:
+
 
 
 

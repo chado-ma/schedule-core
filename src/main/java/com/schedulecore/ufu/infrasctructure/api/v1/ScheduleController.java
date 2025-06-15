@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
 import java.time.MonthDay;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -24,7 +25,7 @@ public class ScheduleController {
     }
 
     @GetMapping("/getSchedule")
-    public ScheduleModel getScheduleNow(ScheduleRequest request) {
+    public List<ScheduleModel> getScheduleNow(ScheduleRequest request) {
         return  getSchedules.get(GetSchedulesInput.builder()
                 .monthDay(MonthDay.of(request.getMonthDay(), request.getMonth()))
                 .month(Month.of(request.getMonth()))

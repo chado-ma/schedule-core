@@ -13,8 +13,11 @@ import java.util.List;
 @Data
 @Builder
 public class ScheduleModel {
-    private DayOfWeek dayOfWeek;
-    private MonthDay monthDay;
-    private List<Time> time;
-
+    private Time horario;
+    private MonthDay data;
+    private String ginasio;
+    private String responsavel;
+    private String curso;
+    private String disponibilidade;
+    private String campus;
 }
