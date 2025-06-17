@@ -1,22 +1,22 @@
 package com.schedulecore.ufu.domains.models;
 
-
+import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Time;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.time.MonthDay;
-import java.util.List;
 
 @Data
 @Builder
-public class ScheduleModel {
+public class NewSchedule {
     private Time horario;
     private MonthDay data;
     private String ginasio;
     private String responsavel;
     private String curso;
-    private String campus;
+    private CampusEnum campus;
+    private String matriculaAluno;
+    private String telefone;
+    private Integer quantidadePessoas;
 }

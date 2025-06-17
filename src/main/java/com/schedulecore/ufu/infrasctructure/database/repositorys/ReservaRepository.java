@@ -2,8 +2,6 @@ package com.schedulecore.ufu.infrasctructure.database.repositorys;
 
 import com.schedulecore.ufu.infrasctructure.database.entitys.ReservaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.sql.Time;
 import java.time.MonthDay;
 import java.util.List;
 
