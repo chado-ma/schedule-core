@@ -11,6 +11,7 @@ import com.schedulecore.ufu.infrasctructure.database.repositorys.ReservaReposito
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
 import java.time.Month;
 import java.time.MonthDay;
 import java.util.List;
@@ -56,7 +57,12 @@ public class DatabaseAdapter implements DatabasePort {
 
     @Override
     public Optional<GinasioModel> getGinasioById(String id) {
-        return ginasioRepository.findById(id)
-                .map(GinasioEntity::toModel).orElse(Optional.empty());
+       return ginasioRepository.findById(id).flatMap(GinasioEntity::toModel);
+    }
+
+    @Override
+    public Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, MonthDay monthDay, String ginasio) {
+        return Optional.ofNullable(reservaRepository.findByGinasioAndHorarioAndData(ginasio, horario, monthDay))
+            .map(ReservaEntity::toModel);
     }
 }

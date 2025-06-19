@@ -1,6 +1,6 @@
-package com.schedulecore.ufu.domains.chainresposability.newschedule;
+package com.schedulecore.ufu.domains.chainresponsibility.newschedule;
 
-import com.schedulecore.ufu.domains.chainresposability.ScheduleValidator;
+import com.schedulecore.ufu.domains.chainresponsibility.ScheduleValidator;
 import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.NewSchedule;
 import com.schedulecore.ufu.domains.ports.DatabasePort;

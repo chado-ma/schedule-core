@@ -1,4 +1,4 @@
-package com.schedulecore.ufu.domains.chainresposability;
+package com.schedulecore.ufu.domains.chainresponsibility;
 
 import com.schedulecore.ufu.domains.models.NewSchedule;
 

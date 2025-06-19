@@ -5,6 +5,7 @@ import com.schedulecore.ufu.domains.models.NewSchedule;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.infrasctructure.api.v1.ScheduleController;
 
+import java.sql.Time;
 import java.time.Month;
 import java.time.MonthDay;
 import java.util.List;
@@ -15,4 +16,5 @@ public interface DatabasePort {
     List<ScheduleModel> getSchedulesByMonthAndDay(Month month, MonthDay monthDay);
     void saveSchedule(NewSchedule model);
     Optional<GinasioModel> getGinasioById(String id);
+    Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, MonthDay monthDay, String ginasio);
 }

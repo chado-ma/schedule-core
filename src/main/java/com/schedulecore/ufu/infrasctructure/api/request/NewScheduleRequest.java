@@ -3,10 +3,14 @@ package com.schedulecore.ufu.infrasctructure.api.request;
 import com.schedulecore.ufu.domains.inputs.CreateScheduleInput;
 import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Data;
 
 import java.sql.Time;
 import java.time.MonthDay;
 
+@Data
+@Builder
 public class NewScheduleRequest {
 
     @NotNull
