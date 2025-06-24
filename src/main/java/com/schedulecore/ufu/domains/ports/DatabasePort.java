@@ -15,6 +15,10 @@ public interface DatabasePort {
     List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Month month, MonthDay monthDay, String campus);
     List<ScheduleModel> getSchedulesByMonthAndDay(Month month, MonthDay monthDay);
     void saveSchedule(NewSchedule model);
+    void saveGinasio(GinasioModel model);
+    void updateSchedule(NewSchedule model);
+    void updateGinasio(GinasioModel model);
+   void deleteSchedule(Time horario, MonthDay data, String ginasio, String responsavel);
     Optional<GinasioModel> getGinasioById(String id);
     Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, MonthDay monthDay, String ginasio);
 }

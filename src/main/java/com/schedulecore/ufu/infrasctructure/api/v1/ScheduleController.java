@@ -9,6 +9,7 @@ import com.schedulecore.ufu.domains.resourses.GetSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/v1")
 public class ScheduleController {
     private final GetSchedules getSchedules;
@@ -25,13 +27,15 @@ public class ScheduleController {
 
     @GetMapping("/teste")
     public String teste() {
+        log.info("Received request for teste endpoint");
         return "Schedule UFU Core is running";
     }
 
     @GetMapping("/schedule")
     public List<ScheduleModel> getSchedule(@RequestBody ScheduleRequest request) {
-        return  getSchedules.get(GetSchedulesInput.builder()
-                .monthDay(MonthDay.of(request.getMonthDay(), request.getMonth()))
+        log.info("Received request for getSchedule: {}", request);
+        return getSchedules.get(GetSchedulesInput.builder()
+                .monthDay(MonthDay.of(request.getMonth(), request.getMonthDay()))
                 .month(Month.of(request.getMonth()))
                 .campus(Optional.ofNullable(CampusEnum.valueOfOrDefault(request.getCampus())))
                 .build());
@@ -39,6 +43,7 @@ public class ScheduleController {
 
     @PostMapping("/schedule")
     public void createShedule(@RequestBody NewScheduleRequest request) {
+        log.info("Received request for createShedule: {}", request);
         createSchedule.execute(request.toInput());
     }
 
