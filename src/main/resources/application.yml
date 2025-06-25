@@ -1,14 +1,4 @@
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5432/SCHEDULEDB
-        username: user
-        password: user
-    jpa:
-        hibernate:
-            ddl-auto: update
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-    profiles:
-        active: local
     application:
         name: schedulecore
 
