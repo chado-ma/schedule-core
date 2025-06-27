@@ -1,13 +1,12 @@
 package com.schedulecore.ufu.infrasctructure.api.request;
 
-import com.schedulecore.ufu.domains.inputs.CreateGinasioInput;
+import com.schedulecore.ufu.domains.inputs.CreateOrUpdateGinasioInput;
 import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Time;
-import java.util.Locale;
 
 @Data
 @Builder
@@ -21,8 +20,8 @@ public class CreateGinasioRequest {
     @NotNull
     private Time endTime;
 
-    public CreateGinasioInput toInput() {
-        return CreateGinasioInput.builder()
+    public CreateOrUpdateGinasioInput toInput() {
+        return CreateOrUpdateGinasioInput.builder()
                 .nome(nome)
                 .campus(CampusEnum.valueOf(campus.toUpperCase()).name())
                 .startTime(startTime)

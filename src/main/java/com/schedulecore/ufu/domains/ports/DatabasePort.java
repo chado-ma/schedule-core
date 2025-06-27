@@ -18,7 +18,7 @@ public interface DatabasePort {
     void saveGinasio(GinasioModel model);
     void updateSchedule(NewSchedule model);
     void updateGinasio(GinasioModel model);
-   void deleteSchedule(Time horario, MonthDay data, String ginasio, String responsavel);
+    void deleteSchedule(Time horario, MonthDay data, String ginasio, String matriculaAluno);
     Optional<GinasioModel> getGinasioById(String id);
     Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, MonthDay monthDay, String ginasio);
 }

@@ -9,7 +9,7 @@ import java.sql.Time;
 
 @Data
 @Builder
-public class CreateGinasioInput {
+public class CreateOrUpdateGinasioInput {
     private String nome;
     private String campus;
     private Time startTime;

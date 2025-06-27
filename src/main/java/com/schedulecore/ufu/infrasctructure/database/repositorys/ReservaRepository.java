@@ -12,5 +12,5 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
     List<ReservaEntity> findAllByData(MonthDay data);
     List<ReservaEntity> findAllByMatriculaAluno(String matricula);
     ReservaEntity findByGinasioAndHorarioAndData(String ginasio, Time horario, MonthDay data);
-    void deleteByHorarioAndGinasioAndDataAndResponsavel(Time horario, String ginasio, MonthDay data, String responsavel);
+    void deleteByHorarioAndGinasioAndDataAndMatriculaAluno(Time horario, String ginasio, MonthDay data, String matriculaAluno);
 }

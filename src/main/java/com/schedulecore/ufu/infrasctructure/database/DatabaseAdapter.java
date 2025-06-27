@@ -11,6 +11,7 @@ import com.schedulecore.ufu.infrasctructure.database.repositorys.ReservaReposito
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.time.Month;
@@ -72,6 +73,7 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
+    @Transactional
     public void updateSchedule(NewSchedule model) {
         log.info("Updating schedule: {}", model);
         Optional.ofNullable(
@@ -87,6 +89,7 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
+    @Transactional
     public void updateGinasio(GinasioModel model) {
         log.info("Updating ginasio: {}", model);
         ginasioRepository.findById(model.getNome())
@@ -102,9 +105,10 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
-    public void deleteSchedule(Time horario, MonthDay data, String ginasio, String responsavel) {
-        log.info("Deleting schedule for horario: {}, data: {}, ginasio: {}, responsavel: {}", horario, data, ginasio, responsavel);
-        reservaRepository.deleteByHorarioAndGinasioAndDataAndResponsavel(horario, ginasio, data, responsavel);
+    @Transactional
+    public void deleteSchedule(Time horario, MonthDay data, String ginasio, String matricula) {
+        log.info("Deleting schedule for horario: {}, data: {}, ginasio: {}, matricula: {}", horario, data, ginasio, matricula);
+        reservaRepository.deleteByHorarioAndGinasioAndDataAndMatriculaAluno(horario, ginasio, data, matricula);
     }
 
     @Override

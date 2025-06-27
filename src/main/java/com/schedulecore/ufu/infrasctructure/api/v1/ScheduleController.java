@@ -5,7 +5,9 @@ import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import com.schedulecore.ufu.domains.resourses.CreateSchedule;
+import com.schedulecore.ufu.domains.resourses.DeleteSchedule;
 import com.schedulecore.ufu.domains.resourses.GetSchedules;
+import com.schedulecore.ufu.infrasctructure.api.request.DeleteScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.Optional;
 public class ScheduleController {
     private final GetSchedules getSchedules;
     private final CreateSchedule createSchedule;
+    private final DeleteSchedule deleteSchedule;
 
     @GetMapping("/teste")
     public String teste() {
@@ -45,6 +48,12 @@ public class ScheduleController {
     public void createShedule(@RequestBody NewScheduleRequest request) {
         log.info("Received request for createShedule: {}", request);
         createSchedule.execute(request.toInput());
+    }
+
+    @PostMapping("/schedule/delete")
+    public void deleteSchedule(@RequestBody DeleteScheduleRequest request) {
+        log.info("Received request for deleteSchedule: {}", request);
+        deleteSchedule.execute(request.toInput());
     }
 
 }
