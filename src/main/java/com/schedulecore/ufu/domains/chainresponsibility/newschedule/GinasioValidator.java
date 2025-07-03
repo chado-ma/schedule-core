@@ -12,7 +12,7 @@ public class GinasioValidator extends ScheduleValidator {
 
     @Override
     public boolean check(NewSchedule schedule) {
-        GinasioModel ginasioModel = databasePort.getGinasioById(schedule.getGinasio()).orElseThrow(
+        GinasioModel ginasioModel = databasePort.findGinasioById(schedule.getGinasio()).orElseThrow(
                 () -> new IllegalArgumentException("Ginasio not found with: " + schedule.getGinasio())
         );
         if (schedule.getHorario().before(ginasioModel.getStartTime()) ||

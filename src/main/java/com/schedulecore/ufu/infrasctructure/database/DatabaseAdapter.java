@@ -26,7 +26,7 @@ public class DatabaseAdapter implements DatabasePort {
     private final GinasioRepository ginasioRepository;
 
     @Override
-    public List<ScheduleModel> getSchedulesByGinasioAndMonthAndDay(Date data, String ginasio) {
+    public List<ScheduleModel> findSchedulesByGinasioAndMonthAndDay(Date data, String ginasio) {
         log.info("getSchedulesByCampusAndMonthAndDay schedules for ginasio: {}, data: {}", ginasio, data);
         return reservaRepository.findAllByGinasioAndData(ginasio, data)
                 .stream()
@@ -35,8 +35,8 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
-    public List<ScheduleModel> getSchedulesByMonthAndDay(Date data) {
-        log.info("getSchedulesByMonthAndDay schedules for data: {}", data);
+    public List<ScheduleModel> findSchedulesByMonthAndDay(Date data) {
+        log.info("findSchedulesByMonthAndDay schedules for data: {}", data);
         return reservaRepository.findAllByData(data)
                 .stream()
                 .map(ReservaEntity::toModel)
@@ -111,7 +111,7 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
-    public Optional<GinasioModel> getGinasioById(String id) {
+    public Optional<GinasioModel> findGinasioById(String id) {
         log.info("getGinasioById - ginasio by id: {}", id);
         return ginasioRepository.findById(id).flatMap(GinasioEntity::toModel);
     }
@@ -121,5 +121,12 @@ public class DatabaseAdapter implements DatabasePort {
         log.info("findScheduleByHorarioAndMounthDayAndGinasio - searching schedule for ginasio: {}, horario: {}, data: {}", ginasio, horario, data);
         return Optional.ofNullable(reservaRepository.findByGinasioAndHorarioAndData(ginasio, horario, data))
                 .map(ReservaEntity::toModel);
+    }
+
+    @Override
+    @Transactional
+    public void deleteGinasio(String ginasio) {
+        log.info("Deleting ginasio: {}" , ginasio);
+       ginasioRepository.deleteById(ginasio);
     }
 }

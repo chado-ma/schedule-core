@@ -19,13 +19,13 @@ public class GetSchedulesImpl implements GetSchedules {
     @Override
     public List<ScheduleModel> get(GetSchedulesInput input) {
         HashMap<Time, ScheduleModel> scheduleMap = new HashMap<>();
-        input.getGinasio().map(ginasio -> databasePort.getSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
-                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getData())).forEach(
+        input.getGinasio().map(ginasio -> databasePort.findSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
+                .orElseGet(() -> databasePort.findSchedulesByMonthAndDay(input.getData())).forEach(
                         schedule -> {
                             scheduleMap.put(schedule.getHorario(), schedule);
                         }
                 );
-        Optional<GinasioModel> model = input.getGinasio().flatMap(databasePort::getGinasioById);
+        Optional<GinasioModel> model = input.getGinasio().flatMap(databasePort::findGinasioById);
         if (model.isPresent()) {
             Time horario = model.get().getStartTime();
             while (model.get().getEndTime().after(horario)) {

@@ -12,7 +12,7 @@ public class CreateOrUpdateGinasioImpl implements CreateOrUpdateGinasio {
     private final DatabasePort databasePort;
     @Override
     public void execute(CreateOrUpdateGinasioInput input) {
-        databasePort.getGinasioById(input.getNome())
+        databasePort.findGinasioById(input.getNome())
                 .ifPresentOrElse(
                         ginasio -> databasePort.updateGinasio(input.toModel()),
                         () -> databasePort.saveGinasio(input.toModel())
