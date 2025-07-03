@@ -8,7 +8,7 @@ import java.sql.Time;
 import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
-    List<ReservaEntity> findAllByCampusAndData(String campus, Date data);
+    List<ReservaEntity> findAllByGinasioAndData(String ginasio, Date data);
 
     List<ReservaEntity> findAllByData(Date data);
 

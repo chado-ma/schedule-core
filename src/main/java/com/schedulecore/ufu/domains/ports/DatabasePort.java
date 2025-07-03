@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DatabasePort {
-    List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Date data, String campus);
+    List<ScheduleModel> getSchedulesByGinasioAndMonthAndDay(Date data, String campus);
     List<ScheduleModel> getSchedulesByMonthAndDay(Date data);
     void saveSchedule(NewSchedule model);
     void saveGinasio(GinasioModel model);

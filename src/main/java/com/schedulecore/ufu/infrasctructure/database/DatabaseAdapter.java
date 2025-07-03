@@ -26,9 +26,9 @@ public class DatabaseAdapter implements DatabasePort {
     private final GinasioRepository ginasioRepository;
 
     @Override
-    public List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Date data, String campus) {
-        log.info("getSchedulesByCampusAndMonthAndDay schedules for campus: {}, data: {}", campus, data);
-        return reservaRepository.findAllByCampusAndData(campus, data)
+    public List<ScheduleModel> getSchedulesByGinasioAndMonthAndDay(Date data, String ginasio) {
+        log.info("getSchedulesByCampusAndMonthAndDay schedules for ginasio: {}, data: {}", ginasio, data);
+        return reservaRepository.findAllByGinasioAndData(ginasio, data)
                 .stream()
                 .map(ReservaEntity::toModel)
                 .toList();

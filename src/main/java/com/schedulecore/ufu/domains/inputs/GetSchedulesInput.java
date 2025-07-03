@@ -14,5 +14,5 @@ import java.util.Optional;
 @Builder
 public class GetSchedulesInput {
     private Date data;
-    private Optional<CampusEnum> campus;
+    private Optional<String> ginasio;
 }

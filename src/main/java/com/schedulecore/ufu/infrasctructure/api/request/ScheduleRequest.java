@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
@@ -13,5 +12,5 @@ import java.time.LocalDate;
 public class ScheduleRequest {
     @NotNull
     private LocalDate data;
-    private String campus;
+    private String ginasio;
 }

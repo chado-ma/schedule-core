@@ -40,7 +40,7 @@ public class ScheduleController {
         log.info("Received request for getSchedule: {}", request);
         return getSchedules.get(GetSchedulesInput.builder()
                 .data(Date.valueOf(request.getData()))
-                .campus(Optional.ofNullable(CampusEnum.valueOfOrDefault(request.getCampus())))
+                .ginasio(Optional.ofNullable(request.getGinasio()))
                 .build());
     }
 
