@@ -2,13 +2,11 @@ package com.schedulecore.ufu.infrasctructure.database.entitys;
 
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.time.MonthDay;
 
 @Entity
 @Table(name = "reservas")
@@ -20,7 +18,7 @@ public class ReservaEntity {
     private Long id;
 
     private Time horario;
-    private MonthDay data;
+    private Date data;
     private String ginasio;
     private String responsavel;
     private String curso;
@@ -29,7 +27,7 @@ public class ReservaEntity {
     private String telefone;
     private Integer quantidadePessoas;
 
-    public ReservaEntity(Time horario, MonthDay data, String ginasio, String responsavel, String curso, String campus, String matriculaAluno, String telefone, Integer quantidadePessoas) {
+    public ReservaEntity(Time horario, Date data, String ginasio, String responsavel, String curso, String campus, String matriculaAluno, String telefone, Integer quantidadePessoas) {
         this.horario = horario;
         this.data = data;
         this.ginasio = ginasio;

@@ -16,7 +16,7 @@ public class GetSchedulesImpl implements GetSchedules {
 
     @Override
     public List<ScheduleModel> get(GetSchedulesInput input) {
-        return input.getCampus().map(campus -> databasePort.getSchedulesByCampusAndMonthAndDay(input.getMonth(), input.getMonthDay(), campus.name()))
-                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getMonth(), input.getMonthDay()));
+        return input.getCampus().map(campus -> databasePort.getSchedulesByCampusAndMonthAndDay(input.getData(), campus.name()))
+                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getData()));
     }
 }

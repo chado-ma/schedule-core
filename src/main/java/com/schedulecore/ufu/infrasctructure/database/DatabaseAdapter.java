@@ -13,9 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.time.Month;
-import java.time.MonthDay;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,18 +26,18 @@ public class DatabaseAdapter implements DatabasePort {
     private final GinasioRepository ginasioRepository;
 
     @Override
-    public List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Month month, MonthDay monthDay, String campus) {
-        log.info("getSchedulesByCampusAndMonthAndDay schedules for campus: {}, month: {}, day: {}", campus, month, monthDay);
-        return reservaRepository.findAllByCampusAndData(campus, monthDay)
+    public List<ScheduleModel> getSchedulesByCampusAndMonthAndDay(Date data, String campus) {
+        log.info("getSchedulesByCampusAndMonthAndDay schedules for campus: {}, data: {}", campus, data);
+        return reservaRepository.findAllByCampusAndData(campus, data)
                 .stream()
                 .map(ReservaEntity::toModel)
                 .toList();
     }
 
     @Override
-    public List<ScheduleModel> getSchedulesByMonthAndDay(Month month, MonthDay monthDay) {
-        log.info("getSchedulesByMonthAndDay schedules for month: {}, day: {}", month, monthDay);
-        return reservaRepository.findAllByData(monthDay)
+    public List<ScheduleModel> getSchedulesByMonthAndDay(Date data) {
+        log.info("getSchedulesByMonthAndDay schedules for data: {}", data);
+        return reservaRepository.findAllByData(data)
                 .stream()
                 .map(ReservaEntity::toModel)
                 .toList();
@@ -106,7 +105,7 @@ public class DatabaseAdapter implements DatabasePort {
 
     @Override
     @Transactional
-    public void deleteSchedule(Time horario, MonthDay data, String ginasio, String matricula) {
+    public void deleteSchedule(Time horario, Date data, String ginasio, String matricula) {
         log.info("Deleting schedule for horario: {}, data: {}, ginasio: {}, matricula: {}", horario, data, ginasio, matricula);
         reservaRepository.deleteByHorarioAndGinasioAndDataAndMatriculaAluno(horario, ginasio, data, matricula);
     }
@@ -118,9 +117,9 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
-    public Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, MonthDay monthDay, String ginasio) {
-    log.info("findScheduleByHorarioAndMounthDayAndGinasio - searching schedule for ginasio: {}, horario: {}, monthDay: {}", ginasio, horario, monthDay);
-        return Optional.ofNullable(reservaRepository.findByGinasioAndHorarioAndData(ginasio, horario, monthDay))
+    public Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, Date data, String ginasio) {
+        log.info("findScheduleByHorarioAndMounthDayAndGinasio - searching schedule for ginasio: {}, horario: {}, data: {}", ginasio, horario, data);
+        return Optional.ofNullable(reservaRepository.findByGinasioAndHorarioAndData(ginasio, horario, data))
                 .map(ReservaEntity::toModel);
     }
 }

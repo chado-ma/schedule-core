@@ -4,6 +4,7 @@ package com.schedulecore.ufu.domains.models;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder
 public class ScheduleModel {
     private Time horario;
-    private MonthDay data;
+    private Date data;
     private String ginasio;
     private String responsavel;
     private String curso;

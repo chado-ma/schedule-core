@@ -6,7 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.MonthDay;
 
 @Data
@@ -15,9 +17,7 @@ public class DeleteScheduleRequest {
     @NotBlank
     private Time horario;
     @NotNull
-    private Integer monthDay;
-    @NotNull
-    private Integer month;
+    private LocalDate data;
     @NotBlank
     private String ginasio;
     @NotBlank
@@ -27,7 +27,7 @@ public class DeleteScheduleRequest {
     public DeleteScheduleInput toInput() {
         return DeleteScheduleInput.builder()
                 .horario(horario)
-                .data(MonthDay.of(month, monthDay))
+                .data(Date.valueOf(data))
                 .ginasio(ginasio)
                 .matriculaAluno(matriculaAluno)
                 .build();

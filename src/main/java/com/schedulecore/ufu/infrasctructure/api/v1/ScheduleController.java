@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.time.Month;
 import java.time.MonthDay;
 import java.util.List;
@@ -38,8 +39,7 @@ public class ScheduleController {
     public List<ScheduleModel> getSchedule(@RequestBody ScheduleRequest request) {
         log.info("Received request for getSchedule: {}", request);
         return getSchedules.get(GetSchedulesInput.builder()
-                .monthDay(MonthDay.of(request.getMonth(), request.getMonthDay()))
-                .month(Month.of(request.getMonth()))
+                .data(Date.valueOf(request.getData()))
                 .campus(Optional.ofNullable(CampusEnum.valueOfOrDefault(request.getCampus())))
                 .build());
     }

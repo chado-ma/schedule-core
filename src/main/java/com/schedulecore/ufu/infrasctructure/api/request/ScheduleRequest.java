@@ -5,12 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Data
 @Builder
 public class ScheduleRequest {
     @NotNull
-    private Integer monthDay;
-    @NotNull
-    private Integer month;
+    private LocalDate data;
     private String campus;
 }

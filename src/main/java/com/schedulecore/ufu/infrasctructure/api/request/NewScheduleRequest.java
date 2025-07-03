@@ -6,7 +6,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.MonthDay;
 
 @Data
@@ -14,9 +17,7 @@ import java.time.MonthDay;
 public class NewScheduleRequest {
 
     @NotNull
-    private Integer monthDay;
-    @NotNull
-    private Integer month;
+    private LocalDate data;
     @NotNull
     private Time horario;
     @NotNull
@@ -36,7 +37,7 @@ public class NewScheduleRequest {
 
     public CreateScheduleInput toInput() {
         return CreateScheduleInput.builder()
-                .data(MonthDay.of(month, monthDay))
+                .data(Date.valueOf(data))
                 .horario(horario)
                 .ginasio(ginasio)
                 .responsavel(responsavel)
