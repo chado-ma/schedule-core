@@ -11,7 +11,7 @@ collection:
     meta:
       id: req_bf1ee3c1313d4e50bb1c38389e14f08d
       created: 1750011429579
-      modified: 1751503218950
+      modified: 1751505435362
       isPrivate: false
       description: ""
       sortKey: -1750011429579
@@ -21,7 +21,7 @@ collection:
       text: |-
         {
           "data" : "2025-03-10",
-        	"campus" : "SANTA_MONICA"
+        	"ginasio" : "Poliesportiva azul"
         }
     headers:
       - name: Content-Type
@@ -41,7 +41,7 @@ collection:
     meta:
       id: req_9cd8a1e68235440091390f31546fed76
       created: 1750294635758
-      modified: 1751503828601
+      modified: 1751510106154
       isPrivate: false
       description: ""
       sortKey: -1750294635759
@@ -51,12 +51,12 @@ collection:
       text: |-
         {
           "data" : "2025-03-10",
-          "horario": "09:00:00",
+          "horario": "17:00:00",
           "ginasio": "Poliesportiva azul",
-          "responsavel": "Gabriel Machado",
+          "responsavel": "Felipe Machado",
           "curso": "Sistema de Informação",
           "campus": "SANTA_MONICA",
-          "matriculaAluno": "12121BSI217",
+          "matriculaAluno": "12121BSI227",
           "telefone": "34999999999",
           "quantidadePessoas": 10
         }
@@ -110,7 +110,7 @@ collection:
     meta:
       id: req_00e4f26cc4d648a0bc20c07f45275f65
       created: 1751026378522
-      modified: 1751503795974
+      modified: 1751510204749
       isPrivate: false
       description: ""
       sortKey: -1751026378522
@@ -120,12 +120,12 @@ collection:
       text: |-
         {
           "data" : "2025-03-10",
-          "horario": "08:00:00",
+          "horario": "17:00:00",
           "ginasio": "Poliesportiva azul",
           "responsavel": "Gabriel Machado",
           "curso": "Sistema de Informação",
           "campus": "SANTA_MONICA",
-          "matriculaAluno": "12121BSI217",
+          "matriculaAluno": "12121BSI227",
           "telefone": "34999999999",
           "quantidadePessoas": 10
         }
