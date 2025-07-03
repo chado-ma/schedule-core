@@ -1,13 +1,15 @@
 package com.schedulecore.ufu.domains.usecases;
 
 import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
 import com.schedulecore.ufu.domains.resourses.GetSchedules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.sql.Time;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +18,31 @@ public class GetSchedulesImpl implements GetSchedules {
 
     @Override
     public List<ScheduleModel> get(GetSchedulesInput input) {
-        return input.getGinasio().map(ginasio -> databasePort.getSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
-                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getData()));
+        HashMap<Time, ScheduleModel> scheduleMap = new HashMap<>();
+        input.getGinasio().map(ginasio -> databasePort.getSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
+                .orElseGet(() -> databasePort.getSchedulesByMonthAndDay(input.getData())).forEach(
+                        schedule -> {
+                            scheduleMap.put(schedule.getHorario(), schedule);
+                        }
+                );
+        Optional<GinasioModel> model = input.getGinasio().flatMap(databasePort::getGinasioById);
+        if (model.isPresent()) {
+            Time horario = model.get().getStartTime();
+            while (model.get().getEndTime().after(horario)) {
+                if (!scheduleMap.containsKey(horario)) {
+                    scheduleMap.put(horario, ScheduleModel.builder()
+                            .data(input.getData())
+                            .ginasio(model.get().getNome())
+                            .campus(model.get().getCampus())
+                            .horario(horario)
+                            .build()
+                    );
+                }
+                horario = Time.valueOf(horario.toLocalTime().plusHours(1));
+            }
+        }
+        List<ScheduleModel> result = new ArrayList<>(scheduleMap.values());
+        result.sort(Comparator.comparing(ScheduleModel::getHorario));
+        return result;
     }
 }

@@ -15,8 +15,10 @@ public class GinasioValidator extends ScheduleValidator {
         GinasioModel ginasioModel = databasePort.getGinasioById(schedule.getGinasio()).orElseThrow(
                 () -> new IllegalArgumentException("Ginasio not found with: " + schedule.getGinasio())
         );
-        if (schedule.getHorario().toLocalTime().isBefore(ginasioModel.getStartTime().toLocalTime()) ||
-            schedule.getHorario().toLocalTime().isAfter(ginasioModel.getEndTime().toLocalTime())) {
+        if (schedule.getHorario().before(ginasioModel.getStartTime()) ||
+            schedule.getHorario().after(ginasioModel.getEndTime()) ||
+                schedule.getHorario().equals(ginasioModel.getEndTime())
+        ) {
             throw new IllegalArgumentException("Schedule time is out of Ginasio operating hours: " + ginasioModel);
         }
         return checkNext(schedule);
