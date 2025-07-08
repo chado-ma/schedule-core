@@ -25,14 +25,16 @@ public class ReservaEntity {
     private String campus;
     private String matriculaAluno;
     private String telefone;
+    private String email;
     private Integer quantidadePessoas;
 
-    public ReservaEntity(Time horario, Date data, String ginasio, String responsavel, String curso, String campus, String matriculaAluno, String telefone, Integer quantidadePessoas) {
+    public ReservaEntity(Time horario, Date data, String ginasio, String responsavel, String curso, String campus, String matriculaAluno, String telefone, Integer quantidadePessoas, String email) {
         this.horario = horario;
         this.data = data;
         this.ginasio = ginasio;
         this.responsavel = responsavel;
         this.curso = curso;
+        this.email = email;
         this.campus = campus;
         this.matriculaAluno = matriculaAluno;
         this.telefone = telefone;
@@ -45,6 +47,8 @@ public class ReservaEntity {
                 .horario(horario)
                 .data(data)
                 .ginasio(ginasio)
+                .email(email)
+                .matriculaAluno(matriculaAluno)
                 .responsavel(responsavel)
                 .curso(curso)
                 .campus(campus)

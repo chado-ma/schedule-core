@@ -1,6 +1,17 @@
 spring:
     application:
         name: schedulecore
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: ${email}
+        password: ${senha}
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
 
 server:
     port: 3000

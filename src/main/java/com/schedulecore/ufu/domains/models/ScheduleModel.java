@@ -20,4 +20,6 @@ public class ScheduleModel {
     private String responsavel;
     private String curso;
     private String campus;
+    private String matriculaAluno;
+    private String email;
 }

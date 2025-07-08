@@ -18,5 +18,6 @@ public class NewSchedule {
     private CampusEnum campus;
     private String matriculaAluno;
     private String telefone;
+    private String email;
     private Integer quantidadePessoas;
 }

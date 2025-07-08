@@ -16,6 +16,7 @@ public class CreateScheduleInput {
     private String ginasio;
     private String responsavel;
     private String curso;
+    private String email;
     private CampusEnum campus;
     private String matriculaAluno;
     private String telefone;
@@ -28,6 +29,7 @@ public class CreateScheduleInput {
                 .ginasio(ginasio)
                 .responsavel(responsavel)
                 .curso(curso)
+                .email(email)
                 .campus(campus)
                 .matriculaAluno(matriculaAluno)
                 .telefone(telefone)

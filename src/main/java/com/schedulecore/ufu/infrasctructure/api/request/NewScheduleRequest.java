@@ -27,6 +27,8 @@ public class NewScheduleRequest {
     @NotNull
     private String curso;
     @NotNull
+    private String email;
+    @NotNull
     private String campus;
     @NotNull
     private String matriculaAluno;
@@ -42,6 +44,7 @@ public class NewScheduleRequest {
                 .ginasio(ginasio)
                 .responsavel(responsavel)
                 .curso(curso)
+                .email(email)
                 .campus(CampusEnum.valueOf(campus.toUpperCase()))
                 .matriculaAluno(matriculaAluno)
                 .telefone(telefone)
