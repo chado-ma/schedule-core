@@ -1,7 +1,9 @@
 package com.schedulecore.ufu.domains.usecases;
 
 import com.schedulecore.ufu.domains.chainresponsibility.ScheduleValidator;
+import com.schedulecore.ufu.domains.chainresponsibility.newschedule.DateValidator;
 import com.schedulecore.ufu.domains.chainresponsibility.newschedule.GinasioValidator;
+import com.schedulecore.ufu.domains.chainresponsibility.newschedule.HorarioValidator;
 import com.schedulecore.ufu.domains.chainresponsibility.newschedule.ScheduleDuplicated;
 import com.schedulecore.ufu.domains.inputs.CreateScheduleInput;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
@@ -23,6 +25,8 @@ public class CreateScheduleImpl implements CreateSchedule {
 
     public ScheduleValidator validator(){
         return ScheduleValidator.link(
+                new DateValidator(),
+                new HorarioValidator(),
                 new GinasioValidator(databasePort),
                 new ScheduleDuplicated(databasePort)
         );
