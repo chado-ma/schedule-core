@@ -12,8 +12,8 @@ public class DateValidator extends ScheduleValidator {
     public boolean check(NewSchedule schedule) {
     if (schedule.getData() == null)
         throw new IllegalArgumentException("Date cannot be null");
-    if(schedule.getData().before(Date.from(Instant.from(LocalDate.now()))))
-        throw new IllegalArgumentException("Date cannot be in the past: " + schedule.getData());
+    if(schedule.getData().before(Date.from(Instant.now())))
+        throw new IllegalArgumentException("Date cannot be in the past, data invalid: " + schedule.getData());
 
     return checkNext(schedule);
     }
