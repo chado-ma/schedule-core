@@ -2,7 +2,7 @@ spring:
     application:
         name: schedulecore
     mail:
-        host: smtp.gmail.com
+        host: smtp.office365.com
         port: 587
         username: ${email}
         password: ${senha}
