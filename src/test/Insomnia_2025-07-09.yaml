@@ -1,17 +1,17 @@
 type: collection.insomnia.rest/5.0
-name: My first collection
+name: schedule-core tests
 meta:
-  id: wrk_17f25e828ffa43d7b43b60335c138c57
-  created: 1750011429478
-  modified: 1750011429478
+  id: wrk_36e0b59488fb42bc91d0ee20c1e91c21
+  created: 1752026854568
+  modified: 1752087849183
   description: ""
 collection:
   - url: localhost:3000/v1/schedule
     name: My first request
     meta:
-      id: req_bf1ee3c1313d4e50bb1c38389e14f08d
+      id: req_521eb0e04af84eee96255f40fc4b487a
       created: 1750011429579
-      modified: 1751505435362
+      modified: 1752086849602
       isPrivate: false
       description: ""
       sortKey: -1750011429579
@@ -20,7 +20,7 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "data" : "2025-03-10",
+          "data" : "2025-10-07",
         	"ginasio" : "Poliesportiva azul"
         }
     headers:
@@ -28,6 +28,9 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -39,9 +42,9 @@ collection:
   - url: localhost:3000/v1/schedule
     name: New Request
     meta:
-      id: req_9cd8a1e68235440091390f31546fed76
+      id: req_96354ae726f946d4a0dfce4f73c33a61
       created: 1750294635758
-      modified: 1751510106154
+      modified: 1752087460186
       isPrivate: false
       description: ""
       sortKey: -1750294635759
@@ -50,14 +53,15 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "data" : "2025-03-10",
-          "horario": "17:00:00",
+          "data" : "2025-10-08",
+          "horario": "08:00:00",
           "ginasio": "Poliesportiva azul",
-          "responsavel": "Felipe Machado",
+          "responsavel": "Gabriel Machado",
           "curso": "Sistema de Informação",
           "campus": "SANTA_MONICA",
           "matriculaAluno": "12121BSI227",
           "telefone": "34999999999",
+        	"email": "grm1003@gmail.com",
           "quantidadePessoas": 10
         }
     headers:
@@ -65,6 +69,9 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -76,7 +83,7 @@ collection:
   - url: localhost:3000/v1/adm/ginasio
     name: New Request
     meta:
-      id: req_1f0f5027ea4a4b5db3d1c908f522d712
+      id: req_9c54fa21bf794e8bb92ff5d65545d648
       created: 1750806143562
       modified: 1751503177533
       isPrivate: false
@@ -97,6 +104,9 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -108,9 +118,9 @@ collection:
   - url: localhost:3000/v1/schedule/delete
     name: New Request
     meta:
-      id: req_00e4f26cc4d648a0bc20c07f45275f65
+      id: req_1f478c0ee4064efda17b2d76dc4488d8
       created: 1751026378522
-      modified: 1751510204749
+      modified: 1752087483700
       isPrivate: false
       description: ""
       sortKey: -1751026378522
@@ -119,15 +129,50 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "data" : "2025-03-10",
-          "horario": "17:00:00",
+          "data" : "2025-10-08",
+          "horario": "08:00:00",
           "ginasio": "Poliesportiva azul",
           "responsavel": "Gabriel Machado",
           "curso": "Sistema de Informação",
           "campus": "SANTA_MONICA",
           "matriculaAluno": "12121BSI227",
           "telefone": "34999999999",
+        	"email": "grm1003@gmail.com",
           "quantidadePessoas": 10
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/restricao
+    name: New Request
+    meta:
+      id: req_4bab00a7a83a4717813e36b7c138093e
+      created: 1752085655875
+      modified: 1752086872935
+      isPrivate: false
+      description: ""
+      sortKey: -1752085655875
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data" : "2025-10-07",
+        	"ginasio": "Poliesportiva azul",
+        	"descricao": "feriado"
         }
     headers:
       - name: Content-Type
@@ -145,13 +190,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_6d338c41f0305cca792a23d09baeae1fd2c59a65
+    id: jar_8a54a25ddf0b4b57b987f6f439bb1d2c
     created: 1750011429510
     modified: 1750011429510
 environments:
   name: Base Environment
   meta:
-    id: env_6d338c41f0305cca792a23d09baeae1fd2c59a65
+    id: env_a66c8b438ca44aae95cdde2b761acffa
     created: 1750011429491
     modified: 1750011429491
     isPrivate: false
