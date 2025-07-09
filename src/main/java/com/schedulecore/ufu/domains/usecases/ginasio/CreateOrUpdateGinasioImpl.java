@@ -1,8 +1,8 @@
-package com.schedulecore.ufu.domains.usecases;
+package com.schedulecore.ufu.domains.usecases.ginasio;
 
 import com.schedulecore.ufu.domains.inputs.CreateOrUpdateGinasioInput;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
-import com.schedulecore.ufu.domains.resourses.CreateOrUpdateGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

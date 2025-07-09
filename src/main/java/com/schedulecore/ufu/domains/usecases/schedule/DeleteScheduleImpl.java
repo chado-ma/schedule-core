@@ -1,10 +1,10 @@
-package com.schedulecore.ufu.domains.usecases;
+package com.schedulecore.ufu.domains.usecases.schedule;
 
 import com.schedulecore.ufu.domains.inputs.DeleteScheduleInput;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
 import com.schedulecore.ufu.domains.ports.EmailSenderPort;
-import com.schedulecore.ufu.domains.resourses.DeleteSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

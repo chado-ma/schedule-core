@@ -1,4 +1,4 @@
-package com.schedulecore.ufu.domains.resourses;
+package com.schedulecore.ufu.domains.resourses.schedule;
 
 import com.schedulecore.ufu.domains.inputs.CreateScheduleInput;
 

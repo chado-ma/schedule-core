@@ -1,9 +1,6 @@
 package com.schedulecore.ufu.domains.ports;
 
-import com.schedulecore.ufu.domains.models.GinasioModel;
-import com.schedulecore.ufu.domains.models.NewSchedule;
-import com.schedulecore.ufu.domains.models.ScheduleModel;
-import org.springframework.transaction.annotation.Transactional;
+import com.schedulecore.ufu.domains.models.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -21,4 +18,8 @@ public interface DatabasePort {
     Optional<GinasioModel> findGinasioById(String id);
     Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, Date monthDay, String ginasio);
     void deleteGinasio(String ginasio);
+    Optional<UserModel> findUserByMatricula(String matricula);
+    Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data);
+    void saveRestricao(RestricaoModel model);
+    void deleteRestricao(RestricaoModel model);
 }

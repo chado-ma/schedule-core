@@ -1,10 +1,10 @@
-package com.schedulecore.ufu.domains.usecases;
+package com.schedulecore.ufu.domains.usecases.schedule;
 
 import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
 import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
-import com.schedulecore.ufu.domains.resourses.GetSchedules;
+import com.schedulecore.ufu.domains.resourses.schedule.GetSchedules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,8 @@ public class GetSchedulesImpl implements GetSchedules {
     @Override
     public List<ScheduleModel> get(GetSchedulesInput input) {
         HashMap<Time, ScheduleModel> scheduleMap = new HashMap<>();
-        input.getGinasio().map(ginasio -> databasePort.findSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
+        input.getGinasio().map(
+                ginasio -> databasePort.findSchedulesByGinasioAndMonthAndDay(input.getData(), ginasio))
                 .orElseGet(() -> databasePort.findSchedulesByMonthAndDay(input.getData())).forEach(
                         schedule -> {
                             scheduleMap.put(schedule.getHorario(), schedule);

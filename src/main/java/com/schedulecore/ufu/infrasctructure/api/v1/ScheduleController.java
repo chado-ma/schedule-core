@@ -1,12 +1,10 @@
 package com.schedulecore.ufu.infrasctructure.api.v1;
 
-import com.schedulecore.ufu.domains.inputs.CreateScheduleInput;
 import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
-import com.schedulecore.ufu.domains.models.enums.CampusEnum;
-import com.schedulecore.ufu.domains.resourses.CreateSchedule;
-import com.schedulecore.ufu.domains.resourses.DeleteSchedule;
-import com.schedulecore.ufu.domains.resourses.GetSchedules;
+import com.schedulecore.ufu.domains.resourses.schedule.CreateSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.GetSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.DeleteScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
@@ -15,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.time.Month;
-import java.time.MonthDay;
 import java.util.List;
 import java.util.Optional;
 

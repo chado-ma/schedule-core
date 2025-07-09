@@ -1,13 +1,15 @@
 package com.schedulecore.ufu.infrasctructure.database;
 
-import com.schedulecore.ufu.domains.models.GinasioModel;
-import com.schedulecore.ufu.domains.models.NewSchedule;
-import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.models.*;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
 import com.schedulecore.ufu.infrasctructure.database.entitys.GinasioEntity;
 import com.schedulecore.ufu.infrasctructure.database.entitys.ReservaEntity;
+import com.schedulecore.ufu.infrasctructure.database.entitys.RestricaoEntity;
+import com.schedulecore.ufu.infrasctructure.database.entitys.UserEntity;
 import com.schedulecore.ufu.infrasctructure.database.repositorys.GinasioRepository;
 import com.schedulecore.ufu.infrasctructure.database.repositorys.ReservaRepository;
+import com.schedulecore.ufu.infrasctructure.database.repositorys.RestricaoRepository;
+import com.schedulecore.ufu.infrasctructure.database.repositorys.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,8 @@ import java.util.Optional;
 public class DatabaseAdapter implements DatabasePort {
     private final ReservaRepository reservaRepository;
     private final GinasioRepository ginasioRepository;
+    private final UserRepository userRepository;
+    private final RestricaoRepository restricaoRepository;
 
     @Override
     public List<ScheduleModel> findSchedulesByGinasioAndMonthAndDay(Date data, String ginasio) {
@@ -129,5 +133,49 @@ public class DatabaseAdapter implements DatabasePort {
     public void deleteGinasio(String ginasio) {
         log.info("Deleting ginasio: {}" , ginasio);
        ginasioRepository.deleteById(ginasio);
+    }
+
+    @Override
+    public Optional<UserModel> findUserByMatricula(String matricula) {
+        log.info("findByMatricula - searching user by matricula: {}", matricula);
+        return userRepository.findById(matricula)
+                .map(UserEntity::toModel);
+    }
+
+    @Override
+    public Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data) {
+        log.info("findRestricaoByGinasioAndData - searching restriction for ginasio: {}, data: {}", ginasio, data);
+        return Optional.ofNullable(restricaoRepository.findByGinasioAndData(ginasio, data))
+                .map(RestricaoEntity::toModel);
+    }
+
+    @Override
+    public void saveRestricao(RestricaoModel model) {
+        log.info("Saving new restriction: {}", model);
+         Optional.ofNullable(restricaoRepository.findByGinasioAndData(
+                         model.getGinasio(),
+                         model.getData()
+                 )).ifPresentOrElse(
+                    existingRestricao -> {
+                        throw new IllegalArgumentException("Restriction already exists for ginasio: " + existingRestricao.getGinasio() + " and data: " + existingRestricao.getData());
+                    },
+                    () -> restricaoRepository.save(new RestricaoEntity(
+                            model.getGinasio(),
+                            model.getData(),
+                            model.getDescricao()
+                    ))
+                );
+    }
+
+    @Override
+    public void deleteRestricao(RestricaoModel model) {
+        Optional.ofNullable(restricaoRepository.findByGinasioAndData(model.getGinasio()
+                , model.getData())).map(
+                restricaoEntity -> {
+                    log.info("Delete restriction: {}", model);
+                    restricaoRepository.delete(restricaoEntity);
+                    return restricaoEntity;
+                }
+        ).orElseThrow(() -> new IllegalArgumentException("Restriction not found for ginasio: " + model.getGinasio() + " and data: " + model.getData()));
     }
 }
