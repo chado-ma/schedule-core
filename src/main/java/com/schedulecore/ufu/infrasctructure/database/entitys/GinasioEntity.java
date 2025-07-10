@@ -19,12 +19,12 @@ public class GinasioEntity {
     private Time startTime;
     private Time endTime;
 
-    public Optional<GinasioModel> toModel() {
-        return Optional.of(GinasioModel.builder()
+    public GinasioModel toModel() {
+        return GinasioModel.builder()
                 .nome(nome)
                 .campus(campus)
                 .startTime(startTime)
                 .endTime(endTime)
-                .build());
+                .build();
     }
 }

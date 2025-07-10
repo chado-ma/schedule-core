@@ -118,7 +118,7 @@ public class DatabaseAdapter implements DatabasePort {
     @Override
     public Optional<GinasioModel> findGinasioById(String id) {
         log.info("getGinasioById - ginasio by id: {}", id);
-        return ginasioRepository.findById(id).flatMap(GinasioEntity::toModel);
+        return ginasioRepository.findById(id).flatMap(ginasioEntity -> Optional.ofNullable(ginasioEntity.toModel()));
     }
 
     @Override
@@ -134,8 +134,8 @@ public class DatabaseAdapter implements DatabasePort {
         log.info("Deleting ginasio: {}" , ginasio);
        ginasioRepository.deleteById(ginasio);
     }
-
     @Override
+
     public Optional<UserModel> findUserByMatricula(String matricula) {
         log.info("findByMatricula - searching user by matricula: {}", matricula);
         return userRepository.findById(matricula)
@@ -177,5 +177,41 @@ public class DatabaseAdapter implements DatabasePort {
                     return restricaoEntity;
                 }
         ).orElseThrow(() -> new IllegalArgumentException("Restriction not found for ginasio: " + model.getGinasio() + " and data: " + model.getData()));
+    }
+
+    @Override
+    public List<GinasioModel> findAllGinasios() {
+        log.info("findAllGinasios - fetching all ginasios");
+        return ginasioRepository.findAll()
+                .stream()
+                .map(GinasioEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<RestricaoModel> findAllRestricoes() {
+        log.info("findAllRestricoes - fetching all restrictions");
+        return restricaoRepository.findAll()
+                .stream()
+                .map(RestricaoEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<ScheduleModel> findUserSchedules(String matricula) {
+        log.info("findUserSchedules - getting schedules for user with matricula: {}", matricula);
+        return reservaRepository.findAllByMatriculaAluno(matricula)
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<ScheduleModel> findAllSchedules() {
+        return reservaRepository.findAll()
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
+
     }
 }

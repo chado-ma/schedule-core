@@ -22,4 +22,12 @@ public interface DatabasePort {
     Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data);
     void saveRestricao(RestricaoModel model);
     void deleteRestricao(RestricaoModel model);
+
+    List<GinasioModel> findAllGinasios();
+
+    List<RestricaoModel> findAllRestricoes();
+
+    List<ScheduleModel> findUserSchedules(String matricula);
+
+    List<ScheduleModel> findAllSchedules();
 }
