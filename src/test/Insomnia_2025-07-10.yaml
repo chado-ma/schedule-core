@@ -44,7 +44,7 @@ collection:
     meta:
       id: req_96354ae726f946d4a0dfce4f73c33a61
       created: 1750294635758
-      modified: 1752087460186
+      modified: 1752171006604
       isPrivate: false
       description: ""
       sortKey: -1750294635759
@@ -54,7 +54,7 @@ collection:
       text: |-
         {
           "data" : "2025-10-08",
-          "horario": "08:00:00",
+          "horario": "10:00:00",
           "ginasio": "Poliesportiva azul",
           "responsavel": "Gabriel Machado",
           "curso": "Sistema de Informação",
@@ -179,6 +179,93 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/schedule
+    name: New Request
+    meta:
+      id: req_0f3a9ed383514defb61b191554f9cbe8
+      created: 1752170885805
+      modified: 1752171073066
+      isPrivate: false
+      description: ""
+      sortKey: -1752170885805
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/ginasio
+    name: New Request
+    meta:
+      id: req_9970f3f0cdec445dab55bed42253fa36
+      created: 1752171084147
+      modified: 1752171101415
+      isPrivate: false
+      description: ""
+      sortKey: -1752128270840
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/restricao
+    name: New Request
+    meta:
+      id: req_eea149bc9b314cce9c5fe657acc2b453
+      created: 1752171108890
+      modified: 1752171115529
+      isPrivate: false
+      description: ""
+      sortKey: -1752106963357.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/schedule/12121BSI217
+    name: UserSchedules
+    meta:
+      id: req_85d1ddd33d3648769dbdf7eebf4312b3
+      created: 1752171143935
+      modified: 1752171537570
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429529
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
