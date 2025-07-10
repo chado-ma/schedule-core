@@ -200,7 +200,7 @@ public class DatabaseAdapter implements DatabasePort {
     @Override
     public List<ScheduleModel> findUserSchedules(String matricula) {
         log.info("findUserSchedules - getting schedules for user with matricula: {}", matricula);
-        return reservaRepository.findAllByMatriculaAluno(matricula)
+        return reservaRepository.findByMatriculaAluno(matricula)
                 .stream()
                 .map(ReservaEntity::toModel)
                 .toList();

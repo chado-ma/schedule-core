@@ -12,7 +12,7 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
 
     List<ReservaEntity> findAllByData(Date data);
 
-    List<ReservaEntity> findAllByMatriculaAluno(String matricula);
+    List<ReservaEntity> findByMatriculaAluno(String matricula);
 
     ReservaEntity findByGinasioAndHorarioAndData(String ginasio, Time horario, Date data);
 
