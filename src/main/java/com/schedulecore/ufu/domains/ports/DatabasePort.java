@@ -18,7 +18,6 @@ public interface DatabasePort {
     Optional<GinasioModel> findGinasioById(String id);
     Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, Date monthDay, String ginasio);
     void deleteGinasio(String ginasio);
-    Optional<UserModel> findUserByMatricula(String matricula);
     Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data);
     void saveRestricao(RestricaoModel model);
     void deleteRestricao(RestricaoModel model);
@@ -26,4 +25,7 @@ public interface DatabasePort {
     List<RestricaoModel> findAllRestricoes();
     List<ScheduleModel> findUserSchedules(String matricula);
     List<ScheduleModel> findAllSchedules();
+    Optional<UserModel> findUserByEmail(String email);
+
+    void saveUserOrUpdateUser(UserModel user);
 }

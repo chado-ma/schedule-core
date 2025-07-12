@@ -134,13 +134,6 @@ public class DatabaseAdapter implements DatabasePort {
         log.info("Deleting ginasio: {}" , ginasio);
        ginasioRepository.deleteById(ginasio);
     }
-    @Override
-
-    public Optional<UserModel> findUserByMatricula(String matricula) {
-        log.info("findByMatricula - searching user by matricula: {}", matricula);
-        return userRepository.findById(matricula)
-                .map(UserEntity::toModel);
-    }
 
     @Override
     public Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data) {
@@ -214,4 +207,33 @@ public class DatabaseAdapter implements DatabasePort {
                 .toList();
 
     }
+
+    @Override
+    public Optional<UserModel> findUserByEmail(String email) {
+        log.info("findUserByEmail - searching user by email: {}", email);
+        return userRepository.findById(email)
+                .map(UserEntity::toModel);
+    }
+
+    @Override
+    public void saveUserOrUpdateUser(UserModel user) {
+        log.info("saveUserOrUpdateUser user: {}", user);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setMatricula(user.getMatricula());
+        userEntity.setNome(user.getNome());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setTelefone(user.getTelefone());
+        userEntity.setRole(user.getAcess().name());
+        userRepository.findById(userEntity.getEmail()).ifPresentOrElse(
+                userEntity1 -> {
+                    userEntity1.setMatricula(user.getMatricula());
+                    userEntity1.setNome(user.getNome());
+                    userEntity1.setTelefone(user.getTelefone());
+                    userEntity1.setRole(user.getAcess().name());
+                    userRepository.deleteById(user.getEmail());
+                    userRepository.save(userEntity1);
+                }, () -> userRepository.save(userEntity)
+        );
+    }
+
 }
