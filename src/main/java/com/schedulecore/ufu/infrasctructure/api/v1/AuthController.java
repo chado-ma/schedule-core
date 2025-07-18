@@ -3,6 +3,7 @@ package com.schedulecore.ufu.infrasctructure.api.v1;
 import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.RestricaoModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.models.UserModel;
 import com.schedulecore.ufu.domains.resourses.auth.Authenticate;
 import com.schedulecore.ufu.domains.resourses.auth.EmailValidatorAcess;
 import com.schedulecore.ufu.domains.resourses.auth.GenerateAuth;
@@ -14,6 +15,7 @@ import com.schedulecore.ufu.domains.resourses.restricao.DeleteRestricao;
 import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
 import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -30,19 +32,19 @@ public class AuthController {
     private final GenerateAuth generateAuth;
 
     @PostMapping("")
-    public String generateAuth(@RequestBody GerenateAuthRequest request) {
+    public String generateAuth(@RequestBody @Valid GerenateAuthRequest request) {
         log.info("Received request for generateAuth: {}", request);
         return generateAuth.execute(request.toUserModel());
     }
 
     @PostMapping("/validate")
-    public void authenticate(@RequestBody TokenRequest request) {
+    public UserModel authenticate(@RequestBody @Valid TokenRequest request) {
         log.info("Received request for authenticate: {}", request);
-        authenticate.execute(request.getToken());
+        return authenticate.execute(request.getToken());
     }
 
     @PostMapping("/email/validate")
-    public void emailValidate(@RequestBody EmailRequest request) {
+    public void emailValidate(@RequestBody @Valid EmailRequest request) {
         log.info("Received request for emailValidate: {}", request);
         emailValidatorAcess.execute(request.getEmail(), request.getCode());
     }

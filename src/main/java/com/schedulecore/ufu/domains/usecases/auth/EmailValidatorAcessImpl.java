@@ -26,12 +26,15 @@ public class EmailValidatorAcessImpl implements EmailValidatorAcess {
 
     @Override
     public void sendValidationEmail(String email) {
+        if(email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
         String code = gerarCodigoNumerico();
         if (!emailCodeMap.containsKey(email)) {
-            emailCodeMap.put(email, code);
             emailSenderPort.sendEmail(email,
                     subjectAuth + "Email de validação",
                     bodyAuth + code);
+            emailCodeMap.put(email, code);
             log.info("Validation email sent to {} with code start {}", email, code.substring(0, 2));
         } else {
             log.warn("Email {} already has a validation code, not sending again", email);

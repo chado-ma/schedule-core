@@ -2,6 +2,7 @@ package com.schedulecore.ufu.infrasctructure.api.request;
 
 import com.schedulecore.ufu.domains.models.UserModel;
 import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class GerenateAuthRequest {
     @NotNull
     private String nome;
     @NotNull
+    @Email
     private String email;
     @NotNull
     private String telefone;
