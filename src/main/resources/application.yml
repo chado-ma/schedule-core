@@ -4,6 +4,8 @@ spring:
     mail:
         subjectDelete: "Seu Agendamento Foi Cancelado - "
         bodyDelete: "Seu Agendamento foi cancelado por você ou pelo administrador do sistema, por favor, em caso de dúvidas entrar em contato com time resposável. \n Dados do agendamento:\n"
+        subjectAuth: "Código de Autenticação - "
+        bodyAuth: "Código autenticação email UFU. \n Código (EmailCode):\n"
         host: smtp.office365.com
         port: 587
         username: ${email}

@@ -19,6 +19,7 @@ public class GenerateAuthImpl implements GenerateAuth {
             throw new IllegalArgumentException("User and email cannot be null or empty");
         }
         databasePort.saveUserOrUpdateUser(user);
-        return authPort.generateAuthToken(user);
+        return authPort.generateAuthToken(databasePort.findUserByEmail(user.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("User not found")));
     }
 }

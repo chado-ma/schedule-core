@@ -229,6 +229,26 @@ public class DatabaseAdapter implements DatabasePort {
                     userEntity1.setMatricula(user.getMatricula());
                     userEntity1.setNome(user.getNome());
                     userEntity1.setTelefone(user.getTelefone());
+                    userRepository.deleteById(user.getEmail());
+                    userRepository.save(userEntity1);
+                }, () -> userRepository.save(userEntity)
+        );
+    }
+
+    @Override
+    public void saveUserOrUpdateAdm(UserModel user) {
+        log.info("saveUserOrUpdateAdm user: {}", user);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setMatricula(user.getMatricula());
+        userEntity.setNome(user.getNome());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setTelefone(user.getTelefone());
+        userEntity.setRole(user.getAcess().name());
+        userRepository.findById(userEntity.getEmail()).ifPresentOrElse(
+                userEntity1 -> {
+                    userEntity1.setMatricula(user.getMatricula());
+                    userEntity1.setNome(user.getNome());
+                    userEntity1.setTelefone(user.getTelefone());
                     userEntity1.setRole(user.getAcess().name());
                     userRepository.deleteById(user.getEmail());
                     userRepository.save(userEntity1);
