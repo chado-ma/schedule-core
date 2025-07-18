@@ -1,3 +1,4 @@
+
 # Schedule-Core UFU
 
 ## 🎯 Sobre o Projeto
@@ -20,9 +21,59 @@ A aplicação centraliza a consulta de horários e a realização de agendamento
   * **Validação de Regras de Negócio:**
       * Utiliza uma cadeia de validações (Chain of Responsibility) para garantir a integridade dos agendamentos, verificando duplicidade, restrições de data, horário de funcionamento do ginásio e outros.
 
+## 🔐 Autenticação e Autorização (JWT + Spring Security)
+
+A API utiliza autenticação via **JWT (JSON Web Token)** combinada com **Spring Security**, com as seguintes características:
+
+- **Login e Geração de Token:**
+  - O endpoint `/auth/token` permite autenticação de usuários cadastrados e retorna um JWT assinado com SHA-256.
+  - O token contém claims como `matricula`, `email`, `name` e `role`, com validade de 2 horas.
+
+- **Proteção de Rotas:**
+  - Endpoints públicos: `/auth/**`
+  - Endpoints autenticados: `/v1/schedule/**`
+  - Endpoints restritos ao papel `ADMIN`: `/v1/adm/**`
+
+- **Validação de Token:**
+  - Tokens são validados via filtro personalizado (`JwtAuthenticationFilter`) usando `java-jwt` (Auth0).
+  - A assinatura é feita com base em um hash SHA-256 do e-mail institucional (`spring.mail.username`), aumentando a segurança.
+
+- **Criação Automática de Administrador:**
+  - Ao iniciar a aplicação, um usuário administrador é criado automaticamente caso ainda não exista no banco. O e-mail é definido em `spring.mail.username` e recebe o papel `ADMIN`.
+
+### Endpoints de Autenticação (`/auth`)
+
+| Método | Rota           | Descrição |
+|--------|----------------|-----------|
+| `POST` | `/auth/email`  | Envia um código de verificação para o e-mail institucional informado. |
+| `POST` | `/auth/verify` | Valida o código enviado por e-mail e cria/atualiza o usuário. Retorna um JWT válido. |
+| `POST` | `/auth/token`  | Gera um novo JWT para um usuário já registrado com e-mail `@ufu.br`. |
+| `GET`  | `/auth/user`   | Retorna os dados do usuário autenticado com base no token enviado no header. |
+
+#### 🔐 Fluxo completo de autenticação:
+
+1. O usuário envia seu e-mail institucional no endpoint `/auth/email`:
+```json
+{ "email": "usuario@ufu.br" }
+```
+2. O usuário recebe um código por e-mail e o envia para `/auth/verify`:
+```json
+{ "email": "usuario@ufu.br", "codigo": "123456" }
+```
+3. O sistema retorna um token JWT válido. Para renovar, o usuário pode usar `/auth/token`:
+```json
+{ "email": "usuario@ufu.br" }
+```
+4. Para consultar dados do usuário autenticado:
+```
+GET /auth/user
+Authorization: Bearer <token>
+```
+
 ## 🛠️ Tecnologias Utilizadas
 
   * **Backend:** Java 17, Spring Boot 3.5.0
+  * **Segurança:** Spring Security, Auth0 Java JWT
   * **Banco de Dados:** PostgreSQL
   * **Gerenciador de Dependências:** Maven
   * **Containerização:** Docker (via `docker-compose.yml`)
@@ -32,17 +83,13 @@ A aplicação centraliza a consulta de horários e a realização de agendamento
 O projeto foi estruturado seguindo o padrão de **Arquitetura Hexagonal**, que isola a lógica de negócio de dependências externas e facilita a manutenção e testabilidade do sistema.
 
   * **Hexágono (Core do Domínio):**
-
       * Localizado no pacote `domains`, contém a lógica de negócio pura e agnóstica a tecnologias.
-      * **`ports`**: Define as interfaces (Portas) que o domínio usa para se comunicar com o mundo exterior, como `DatabasePort` e `EmailSenderPort`. O domínio não sabe qual tecnologia implementará essas portas.
+      * **`ports`**: Define as interfaces (Portas) que o domínio usa para se comunicar com o mundo exterior.
 
   * **Adaptadores (Infrastructure):**
-
-      * O pacote `infrasctructure` contém os Adaptadores, que são as implementações concretas das portas.
-      * **Adaptadores Inbound (Driving):** Recebem comandos do mundo exterior e os enviam para o domínio. Ex: `ScheduleController` é um adaptador que expõe a lógica via API REST.
-      * **Adaptadores Outbound (Driven):** São controlados pelo domínio e fornecem implementações para as portas. Ex: `DatabaseAdapter` implementa o `DatabasePort` usando Spring Data JPA e PostgreSQL.
-
-Essa abordagem, inspirada no Domain-Driven Design (DDD), garante que o coração da aplicação (`domains`) permaneça isolado e testável, independentemente das tecnologias de infraestrutura.
+      * O pacote `infrasctructure` contém as implementações concretas das portas.
+      * **Inbound:** Controllers REST (ex: `ScheduleController`).
+      * **Outbound:** Banco de dados, e-mail, etc.
 
 ## 🧪 Testes
 
@@ -84,37 +131,29 @@ A API está versionada sob o prefixo `/v1`. Abaixo estão os endpoints principai
 
 ### Passos
 
-1.  **Clone o repositório:**
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/chado-ma/schedule-core.git
+cd schedule-core
+```
 
-    ```bash
-    git clone https://github.com/chado-ma/schedule-core.git
-    cd schedule-core
-    ```
+2. **Inicie o banco de dados com Docker:**
+```bash
+docker-compose up -d
+```
 
-2.  **Inicie o banco de dados com Docker:**
-    O banco de dados PostgreSQL pode ser iniciado facilmente com o Docker Compose.
+3. **Configure as variáveis de ambiente:**
+- `spring.mail.username`: E-mail institucional do administrador (também usado para assinar tokens).
+- `spring.mail.password`: Senha do e-mail.
 
-    ```bash
-    docker-compose up -d
-    ```
-
-    Isso iniciará um container com o PostgreSQL na porta `5432`, com as credenciais definidas no arquivo `docker-compose.yml`.
-
-3.  **Configure as variáveis de ambiente:**
-    A aplicação utiliza variáveis de ambiente para as credenciais do e-mail de notificação. Configure-as no seu ambiente ou no arquivo `application.yml`.
-
-      * `email`: E-mail usado para enviar notificações.
-      * `senha`: Senha do e-mail.
-
-4.  **Execute a aplicação:**
-    Utilize o Maven para compilar e iniciar o servidor Spring Boot.
-
-    ```bash
-    mvn spring-boot:run
-    ```
+4. **Execute a aplicação:**
+```bash
+mvn spring-boot:run
+```
 
 A aplicação estará disponível em `http://localhost:3000`.
 
 ## 👨‍💻 Autor
 
   * **Gabriel Rezende Machado**
+
