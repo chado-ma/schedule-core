@@ -15,6 +15,9 @@ public class GetUserSchedulesImpl implements GetUserSchedules {
 
     @Override
     public List<ScheduleModel> get(String matricula) {
+        if(matricula == null || matricula.isEmpty()) {
+            throw new IllegalArgumentException("Matrícula não pode ser nula ou vazia");
+        }
         return databasePort.findUserSchedules(matricula);
     }
 }

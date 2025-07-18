@@ -9,6 +9,7 @@ import com.schedulecore.ufu.domains.resourses.schedule.GetUserSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.DeleteScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class ScheduleController {
     }
 
     @GetMapping("/schedule")
-    public List<ScheduleModel> getSchedule(@RequestBody ScheduleRequest request) {
+    public List<ScheduleModel> getSchedule(@RequestBody @Valid ScheduleRequest request) {
         log.info("Received request for getSchedule: {}", request);
         return getSchedules.get(GetSchedulesInput.builder()
                 .data(Date.valueOf(request.getData()))
@@ -43,13 +44,13 @@ public class ScheduleController {
     }
 
     @PostMapping("/schedule")
-    public void createShedule(@RequestBody NewScheduleRequest request) {
+    public void createShedule(@RequestBody @Valid NewScheduleRequest request) {
         log.info("Received request for createShedule: {}", request);
         createSchedule.execute(request.toInput());
     }
 
     @PostMapping("/schedule/delete")
-    public void deleteSchedule(@RequestBody DeleteScheduleRequest request) {
+    public void deleteSchedule(@RequestBody @Valid DeleteScheduleRequest request) {
         log.info("Received request for deleteSchedule: {}", request);
         deleteSchedule.execute(request.toInput());
     }

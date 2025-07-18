@@ -12,6 +12,7 @@ import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
 import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.CreateGinasioRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.RestricaoRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class AdmController {
     private final GetAllSchedules getAllSchedules;
 
     @PostMapping("/ginasio")
-    public void createOrUpdateGinasio(@RequestBody CreateGinasioRequest request) {
+    public void createOrUpdateGinasio(@RequestBody @Valid CreateGinasioRequest request) {
         log.info("Received request for createOrUpdateGinasio: {}", request);
         createOrUpdateGinasio.execute(request.toInput());
     }
@@ -62,12 +63,12 @@ public class AdmController {
     }
 
     @PostMapping("/restricao")
-    public void createRestricao(@RequestBody RestricaoRequest request) {
+    public void createRestricao(@RequestBody @Valid RestricaoRequest request) {
         log.info("Received request for createRestricao: {}", request);
         createRestricao.execute(request.toInput());
     }
     @PostMapping("/restricao/delete")
-    public void deleteRestricao(@RequestBody RestricaoRequest request) {
+    public void deleteRestricao(@RequestBody @Valid RestricaoRequest request) {
         log.info("Received request for deleteRestricao: {}", request);
         deleteRestricao.execute(request.toInput());
     }

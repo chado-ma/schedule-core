@@ -12,6 +12,9 @@ public class DeleteGinasioImpl implements DeleteGinasio {
 
     @Override
     public void execute(String nomeGinasio) {
+        if(nomeGinasio == null || nomeGinasio.isEmpty()) {
+            throw new IllegalArgumentException("Nome do ginásio não pode ser nulo ou vazio");
+        }
         databasePort.deleteGinasio(nomeGinasio);
     }
 }
