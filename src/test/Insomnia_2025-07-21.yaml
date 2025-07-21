@@ -1,15 +1,15 @@
 type: collection.insomnia.rest/5.0
 name: schedule-core tests
 meta:
-  id: wrk_36e0b59488fb42bc91d0ee20c1e91c21
-  created: 1752026854568
-  modified: 1752087849183
+  id: wrk_e49961b1f73543a4bfc90acf7bd4849f
+  created: 1752861858257
+  modified: 1752861858257
   description: ""
 collection:
   - url: localhost:3000/v1/schedule
     name: My first request
     meta:
-      id: req_521eb0e04af84eee96255f40fc4b487a
+      id: req_e9fee32203934eb1bcc778750140a3de
       created: 1750011429579
       modified: 1752812597726
       isPrivate: false
@@ -26,15 +26,10 @@ collection:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_4a7056c6ef7744fea8a21a13d3546fd5
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_0b0e8974b6e145b7bda9b1bc632dead0
-      - id: pair_a79e994bce8b4a44aba4f5630c7b949d
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
     scripts:
       preRequest: ""
       afterResponse: ""
@@ -49,7 +44,7 @@ collection:
   - url: localhost:3000/v1/schedule
     name: New Request
     meta:
-      id: req_96354ae726f946d4a0dfce4f73c33a61
+      id: req_24d028e3d94e4e3d862172b3918d1dd8
       created: 1750294635758
       modified: 1752812548927
       isPrivate: false
@@ -74,15 +69,10 @@ collection:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_b4438297f0004f5997eea326bcf81019
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_c73d3a3ef76b4922b6733b2afe3e7214
-      - id: pair_45a7338f730e4a23b82682746bd5e39d
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
     scripts:
       preRequest: ""
       afterResponse: ""
@@ -97,7 +87,7 @@ collection:
   - url: localhost:3000/v1/adm/ginasio
     name: New Request
     meta:
-      id: req_9c54fa21bf794e8bb92ff5d65545d648
+      id: req_bad68d0e1ac94f83b8bd0bdce5e40bf1
       created: 1750806143562
       modified: 1752812532213
       isPrivate: false
@@ -116,15 +106,10 @@ collection:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_552824514d78418ead308be91c146cbc
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_34418584ed674559ad1101bd2eedf45c
-      - id: pair_d4d792f27e3742228024a31ce2916258
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
     scripts:
       preRequest: ""
       afterResponse: ""
@@ -139,7 +124,7 @@ collection:
   - url: localhost:3000/v1/schedule/delete
     name: New Request
     meta:
-      id: req_1f478c0ee4064efda17b2d76dc4488d8
+      id: req_15a21688844f43a39400b7cd54d5c7f2
       created: 1751026378522
       modified: 1752812514121
       isPrivate: false
@@ -164,15 +149,10 @@ collection:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_fd8cdb0ce3ca416d851834c8c2597488
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_2011bcf158564f88925f6646ced8fe2b
-      - id: pair_1d4c5cb7bc774bf3bc5b82c6e955d6cd
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
     scripts:
       preRequest: ""
       afterResponse: ""
@@ -187,7 +167,7 @@ collection:
   - url: localhost:3000/v1/adm/restricao
     name: New Request
     meta:
-      id: req_4bab00a7a83a4717813e36b7c138093e
+      id: req_da11b6c33dc64f5bae15c7442bb30d32
       created: 1752085655875
       modified: 1752812482026
       isPrivate: false
@@ -205,15 +185,13 @@ collection:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_e3751b4309b241979a9ca585cc51356e
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_e2a4b8710c1d48bda5861e331f1560ca
-      - id: pair_b4c10aa3824f446b9b255b8062d67fdb
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -225,7 +203,7 @@ collection:
   - url: localhost:3000/v1/adm/schedule
     name: New Request
     meta:
-      id: req_0f3a9ed383514defb61b191554f9cbe8
+      id: req_9f8706205cbb491983a18dccbca4ba1b
       created: 1752170885805
       modified: 1752812364665
       isPrivate: false
@@ -235,12 +213,11 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_7a6308328f6541c4bacb732948efbb1f
-      - id: pair_9d583f2141284a2bb5a35a2b07d02892
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -252,7 +229,7 @@ collection:
   - url: localhost:3000/v1/adm/ginasio
     name: New Request
     meta:
-      id: req_9970f3f0cdec445dab55bed42253fa36
+      id: req_d72b488ec65d4b8a8068ff7a30faa672
       created: 1752171084147
       modified: 1752812431644
       isPrivate: false
@@ -262,14 +239,11 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_8349a97c58d04e3cbe0788f4466019eb
-      - id: pair_4858ce07e65c4aaab0fee3ba5f5cb614
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
-        type: text
-        multiline: false
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -281,7 +255,7 @@ collection:
   - url: localhost:3000/v1/adm/restricao
     name: New Request
     meta:
-      id: req_eea149bc9b314cce9c5fe657acc2b453
+      id: req_3d1290be73804012900a0e9d7f2df856
       created: 1752171108890
       modified: 1752812463766
       isPrivate: false
@@ -291,12 +265,11 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_f8c8fa67bc1f4c86818798d799c6b714
-      - id: pair_b6f9d2e2f2d9482b9d18cdc434417579
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -308,7 +281,7 @@ collection:
   - url: localhost:3000/v1/schedule/12121BSI217
     name: UserSchedules
     meta:
-      id: req_85d1ddd33d3648769dbdf7eebf4312b3
+      id: req_6c4ff7ca858f411fb3f721343cb3799c
       created: 1752171143935
       modified: 1752812610685
       isPrivate: false
@@ -318,12 +291,8 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.2.0
-        id: pair_8c443d1ea000417cb0ac80ee58551730
-      - id: pair_98d741638756452aa0aa894010244b84
-        name: Authorization
+      - name: Authorization
         value: "{{ _.Authorization }}"
-        description: ""
-        disabled: false
     scripts:
       preRequest: ""
       afterResponse: ""
@@ -338,12 +307,12 @@ collection:
   - url: localhost:3000/v1/auth
     name: AuthGereneteToken
     meta:
-      id: req_dca921475c5f417e9c698572a36f0134
+      id: req_7147f955ad9a4d54a522f41fa6f777f7
       created: 1752809853709
-      modified: 1752846465445
+      modified: 1753120075167
       isPrivate: false
       description: ""
-      sortKey: -1752056223679.5
+      sortKey: -1750011429429
     method: POST
     body:
       mimeType: application/json
@@ -362,6 +331,48 @@ collection:
     authentication:
       type: none
     scripts:
+      preRequest: ""
+      afterResponse: |+
+        
+        const token = insomnia.response.text();
+        insomnia.environment.set("Authorization", `${token}`);
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth/email/send/gabriel_machado@ufu.br
+    name: emailCodeSend
+    meta:
+      id: req_4056a3c3a086441c9e278cba1c41266e
+      created: 1753114168565
+      modified: 1753114212445
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429379
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "matricula": "12121BSI217",
+          "nome": "Gabriel Machado",
+          "email": "gabriel_machado@ufu.br",
+          "telefone": "34999999999"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
       afterResponse: |+
         
         const token = insomnia.response.text();
@@ -375,12 +386,85 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: localhost:3000/v1/auth/email/validate
+    name: emailCodeValidate
+    meta:
+      id: req_f895177702eb4623857125e690d15abf
+      created: 1753116412870
+      modified: 1753116523007
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429329
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "gabriel_machado@ufu.br",
+          "code": "212707"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: |+
+        
+        const token = insomnia.response.text();
+        insomnia.environment.set("Authorization", `Bearer ${token}`);
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth/validate
+    name: tokenValidate
+    meta:
+      id: req_19f24c21b7244095ae7117414d98ed1f
+      created: 1753119855335
+      modified: 1753120099949
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429279
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "token": "{{ _.Authorization }}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: "\n\n"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_8a54a25ddf0b4b57b987f6f439bb1d2c
+    id: jar_90b9b257150c430c840a2ea514422fd2
     created: 1750011429510
-    modified: 1752846466875
+    modified: 1753120100118
   cookies:
     - id: c0c22059-4a61-4096-a9cb-768e832cb709
       key: JSESSIONID
@@ -389,25 +473,22 @@ cookieJar:
       path: /
       secure: false
       httpOnly: true
-      creation: 2025-07-18T03:36:48.639Z
       hostOnly: true
-      lastAccessed: 2025-07-18T04:19:13.468Z
 environments:
   name: Base Environment
   meta:
-    id: env_a66c8b438ca44aae95cdde2b761acffa
+    id: env_832a84d3f7a6432999d531158e6a9c86
     created: 1750011429491
-    modified: 1752846466877
+    modified: 1753120100121
     isPrivate: false
   subEnvironments:
     - name: "SCHEDULE "
       meta:
-        id: env_57f315ded7ec4e5d9174d110912c1571
+        id: env_cd1f93de80404fb0b63dc66e26ceabb1
         created: 1752811623509
-        modified: 1752846466876
+        modified: 1753120100119
         isPrivate: false
         sortKey: 1752811623509
       data:
-        Authorization: Bearer
-          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYWJyaWVsX21hY2hhZG9AdWZ1LmJyIiwibWF0cmljdWxhIjoiMTIxMjFCU0kyMTciLCJlbWFpbCI6ImdhYnJpZWxfbWFjaGFkb0B1ZnUuYnIiLCJuYW1lIjoiR2FicmllbCBNYWNoYWRvIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUyODQ2NDY2LCJleHAiOjE3NTI5MzI4NjZ9.JI5-XIn8a0dL7U2XPa6kIZ4COwJk1NvzTom3ypdQvug
+        Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYWJyaWVsX21hY2hhZG9AdWZ1LmJyIiwibWF0cmljdWxhIjoiMTIxMjFCU0kyMTciLCJlbWFpbCI6ImdhYnJpZWxfbWFjaGFkb0B1ZnUuYnIiLCJuYW1lIjoiR2FicmllbCBNYWNoYWRvIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUzMTIwMDk1LCJleHAiOjE3NTMyMDY0OTV9.JfSSSKV5327gsx9DbsjsM1CX43Xba194z_ebgg7YSLM
         "": ""
