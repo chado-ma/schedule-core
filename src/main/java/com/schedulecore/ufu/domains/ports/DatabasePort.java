@@ -27,6 +27,6 @@ public interface DatabasePort {
     List<ScheduleModel> findAllSchedules();
     Optional<UserModel> findUserByEmail(String email);
     void saveUserOrUpdateUser(UserModel user);
-
+    List<UserModel> findAllUsers();
     void saveUserOrUpdateAdm(UserModel user);
 }

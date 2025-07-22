@@ -24,33 +24,44 @@ import java.util.List;
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final AuthPort authPort;
+        @Override
+        protected void doFilterInternal(HttpServletRequest request,
+                HttpServletResponse response,
+                FilterChain filterChain) throws ServletException, IOException {
+
+            if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+                filterChain.doFilter(request, response);
+                return;
+            }
+
+            String authHeader = request.getHeader("Authorization");
+            String token;
+            if (authHeader != null) {
+                if (authHeader.startsWith("Bearer ")) {
+                    token = authHeader.substring(7);
+                } else {
+                    token = authHeader;
+                }
+                UserModel username = validateTokenAndGetUsername(token);
+                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    List<SimpleGrantedAuthority> userAuthorities = List.of(new SimpleGrantedAuthority("ROLE_" + username.getAcess().name()));
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(username.getEmail(), username.getAcess(), userAuthorities);
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                    log.info("User authenticated: {}", username.getEmail());
+                }
+            } else {
+                log.warn("Authorization header is missing");
+            }
+            filterChain.doFilter(request, response);
+        }
+
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
-
-        String authHeader = request.getHeader("Authorization");
-        String token;
-        if (authHeader != null) {
-            if (authHeader.startsWith("Bearer ")) {
-                token = authHeader.substring(7);
-            } else {
-                token = authHeader;
-            }
-            UserModel username = validateTokenAndGetUsername(token);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                List<SimpleGrantedAuthority> userAuthorities = List.of(new SimpleGrantedAuthority("ROLE_" + username.getAcess().name()));
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(username.getEmail(), username.getAcess(), userAuthorities);
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-                log.info("User authenticated: {}", username.getEmail());
-            }
-        } else {
-            log.warn("Authorization header is missing");
-        }
-        filterChain.doFilter(request, response);
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return path.startsWith("/v1/auth");
     }
 
     private UserModel validateTokenAndGetUsername(String token) {

@@ -236,6 +236,14 @@ public class DatabaseAdapter implements DatabasePort {
     }
 
     @Override
+    public List<UserModel> findAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserEntity::toModel)
+                .toList();
+    }
+
+    @Override
     public void saveUserOrUpdateAdm(UserModel user) {
         log.info("saveUserOrUpdateAdm user: {}", user);
         UserEntity userEntity = new UserEntity();
