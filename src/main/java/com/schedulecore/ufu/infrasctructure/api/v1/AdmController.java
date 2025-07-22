@@ -3,6 +3,8 @@ package com.schedulecore.ufu.infrasctructure.api.v1;
 import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.RestricaoModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.resourses.auth.GetUsers;
 import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
 import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
 import com.schedulecore.ufu.domains.resourses.ginasio.GetGinasios;
@@ -28,9 +30,9 @@ public class AdmController {
     private final DeleteGinasio deleteGinasio;
     private final CreateRestricao createRestricao;
     private final DeleteRestricao deleteRestricao;
-    private final GetGinasios getGinasios;
     private final GetRestricoes getRestricoes;
     private final GetAllSchedules getAllSchedules;
+    private final GetUsers getUsers;
 
     @PostMapping("/ginasio")
     public void createOrUpdateGinasio(@RequestBody @Valid CreateGinasioRequest request) {
@@ -44,12 +46,6 @@ public class AdmController {
         deleteGinasio.execute(id);
     }
 
-    @GetMapping("/ginasio")
-    public List<GinasioModel> getGinasios() {
-        log.info("Received request for getGinasios");
-        return getGinasios.execute();
-    }
-
     @GetMapping("/restricao")
     public List<RestricaoModel> getRestricao() {
         log.info("Received request for getRestricao");
@@ -60,6 +56,12 @@ public class AdmController {
     private List<ScheduleModel> getAllSchedules() {
         log.info("Received request for getAllSchedules");
         return getAllSchedules.get();
+    }
+
+    @GetMapping("/users")
+    private List<UserModel> getAllUsers() {
+        log.info("Received request for getAllUsers");
+        return getUsers.execute();
     }
 
     @PostMapping("/restricao")
