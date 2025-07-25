@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,11 +39,13 @@ public class ScheduleController {
     }
 
     @GetMapping("")
-    public List<ScheduleModel> getSchedule(@RequestBody @Valid ScheduleRequest request) {
-        log.info("Received request for getSchedule: {}", request);
+    public List<ScheduleModel> getSchedule(
+            @RequestParam("data") LocalDate data,
+            @RequestParam(value = "ginasio", required = false) String ginasio) {
+        log.info("Received request for getSchedule: {}, {}", data, ginasio);
         return getSchedules.get(GetSchedulesInput.builder()
-                .data(Date.valueOf(request.getData()))
-                .ginasio(Optional.ofNullable(request.getGinasio()))
+                .data(Date.valueOf(data))
+                .ginasio(Optional.ofNullable(ginasio))
                 .build());
     }
 

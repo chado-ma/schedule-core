@@ -66,35 +66,63 @@ src/main/java/com/schedulecore/ufu/domains/inputs/CreateScheduleInput.java
 src/main/java/com/schedulecore/ufu/domains/inputs/DeleteScheduleInput.java
 src/main/java/com/schedulecore/ufu/domains/inputs/GetSchedulesInput.java
 src/main/java/com/schedulecore/ufu/domains/inputs/RestricaoInput.java
+src/main/java/com/schedulecore/ufu/domains/models/enums/AcessEnum.java
 src/main/java/com/schedulecore/ufu/domains/models/enums/CampusEnum.java
 src/main/java/com/schedulecore/ufu/domains/models/GinasioModel.java
 src/main/java/com/schedulecore/ufu/domains/models/NewSchedule.java
 src/main/java/com/schedulecore/ufu/domains/models/RestricaoModel.java
 src/main/java/com/schedulecore/ufu/domains/models/ScheduleModel.java
 src/main/java/com/schedulecore/ufu/domains/models/UserModel.java
+src/main/java/com/schedulecore/ufu/domains/ports/AuthPort.java
 src/main/java/com/schedulecore/ufu/domains/ports/DatabasePort.java
 src/main/java/com/schedulecore/ufu/domains/ports/EmailSenderPort.java
+src/main/java/com/schedulecore/ufu/domains/resourses/auth/Authenticate.java
+src/main/java/com/schedulecore/ufu/domains/resourses/auth/EmailValidatorAcess.java
+src/main/java/com/schedulecore/ufu/domains/resourses/auth/GenerateAuth.java
+src/main/java/com/schedulecore/ufu/domains/resourses/auth/GetUsers.java
 src/main/java/com/schedulecore/ufu/domains/resourses/ginasio/CreateOrUpdateGinasio.java
 src/main/java/com/schedulecore/ufu/domains/resourses/ginasio/DeleteGinasio.java
+src/main/java/com/schedulecore/ufu/domains/resourses/ginasio/GetGinasios.java
 src/main/java/com/schedulecore/ufu/domains/resourses/restricao/CreateRestricao.java
 src/main/java/com/schedulecore/ufu/domains/resourses/restricao/DeleteRestricao.java
+src/main/java/com/schedulecore/ufu/domains/resourses/restricao/GetRestricoes.java
 src/main/java/com/schedulecore/ufu/domains/resourses/schedule/CreateSchedule.java
 src/main/java/com/schedulecore/ufu/domains/resourses/schedule/DeleteSchedule.java
+src/main/java/com/schedulecore/ufu/domains/resourses/schedule/GetAllSchedules.java
 src/main/java/com/schedulecore/ufu/domains/resourses/schedule/GetSchedules.java
+src/main/java/com/schedulecore/ufu/domains/resourses/schedule/GetUserSchedules.java
+src/main/java/com/schedulecore/ufu/domains/usecases/auth/AuthenticateImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/auth/EmailValidatorAcessImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/auth/GenerateAuthImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/auth/GetUsersImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/CreateOrUpdateGinasioImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/DeleteGinasioImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/GetGinasiosImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/restricao/CreateRestricaoImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/restricao/DeleteRestricaoImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/restricao/GetRestricoesImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/schedule/CreateScheduleImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/schedule/DeleteScheduleImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/schedule/GetAllSchedulesImpl.java
 src/main/java/com/schedulecore/ufu/domains/usecases/schedule/GetSchedulesImpl.java
+src/main/java/com/schedulecore/ufu/domains/usecases/schedule/GetUserSchedulesImpl.java
+src/main/java/com/schedulecore/ufu/infrasctructure/AdmCreation.java
+src/main/java/com/schedulecore/ufu/infrasctructure/api/cors/CorsConfig.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/request/CreateGinasioRequest.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/request/DeleteScheduleRequest.java
+src/main/java/com/schedulecore/ufu/infrasctructure/api/request/EmailRequest.java
+src/main/java/com/schedulecore/ufu/infrasctructure/api/request/GerenateAuthRequest.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/request/NewScheduleRequest.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/request/RestricaoRequest.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/request/ScheduleRequest.java
+src/main/java/com/schedulecore/ufu/infrasctructure/api/request/TokenRequest.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/AdmController.java
+src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/AuthController.java
 src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/ScheduleController.java
+src/main/java/com/schedulecore/ufu/infrasctructure/auth/AuthAdapter.java
+src/main/java/com/schedulecore/ufu/infrasctructure/auth/AuthService.java
+src/main/java/com/schedulecore/ufu/infrasctructure/auth/config/JwtAuthenticationFilter.java
+src/main/java/com/schedulecore/ufu/infrasctructure/auth/config/SecurityConfig.java
 src/main/java/com/schedulecore/ufu/infrasctructure/database/DatabaseAdapter.java
 src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/GinasioEntity.java
 src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/ReservaEntity.java
@@ -110,7 +138,9 @@ src/main/java/com/schedulecore/ufu/ScheduleCoreApplication.java
 src/main/resources/application-docker.yml
 src/main/resources/application-localdb.yml
 src/main/resources/application.yml
-src/test/firstcolletion.yaml
+src/test/Insomnia_2025-07-21.yaml
+src/test/java/com/schedule/ufu/fixtures/inputs/GetSchedulesInputFixture.java
+src/test/java/com/schedule/ufu/usecases/GetSchedulesImplTest.java
 </directory_structure>
 
 <files>
@@ -1177,7 +1207,7 @@ default_text_search_config = 'pg_catalog.english'
 <file path="backup/postgres/data/postmaster.pid">
 1
 /var/lib/postgresql/data
-1752085557
+1753112541
 5432
 /var/run/postgresql
 *
@@ -1187,10 +1217,6 @@ ready
 
 <file path="data/myid">
 1
-</file>
-
-<file path="README.md">
-# schedule-core
 </file>
 
 <file path="src/main/java/com/schedulecore/ufu/domains/chainresponsibility/newschedule/HorarioValidator.java">
@@ -1347,6 +1373,18 @@ public class RestricaoInput {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/domains/models/enums/AcessEnum.java">
+package com.schedulecore.ufu.domains.models.enums;
+
+import lombok.Getter;
+
+@Getter
+public enum AcessEnum {
+    ADMIN,
+    USER;
+}
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/domains/models/GinasioModel.java">
 package com.schedulecore.ufu.domains.models;
 
@@ -1384,19 +1422,15 @@ public class RestricaoModel {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/domains/models/UserModel.java">
-package com.schedulecore.ufu.domains.models;
+<file path="src/main/java/com/schedulecore/ufu/domains/ports/AuthPort.java">
+package com.schedulecore.ufu.domains.ports;
 
-import lombok.Builder;
-import lombok.Data;
+import com.schedulecore.ufu.domains.models.UserModel;
 
-@Data
-@Builder
-public class UserModel {
-    private String matricula;
-    private String nome;
-    private String email;
-    private String telefone;
+public interface AuthPort {
+    String generateAuthToken(UserModel user);
+
+    UserModel authenticateUser(String token);
 }
 </file>
 
@@ -1405,6 +1439,38 @@ package com.schedulecore.ufu.domains.ports;
 
 public interface EmailSenderPort {
     void sendEmail(String to, String subject, String body);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/auth/Authenticate.java">
+package com.schedulecore.ufu.domains.resourses.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+
+public interface Authenticate {
+    UserModel execute(String token);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/auth/GenerateAuth.java">
+package com.schedulecore.ufu.domains.resourses.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+
+public interface GenerateAuth {
+    String execute(UserModel user);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/auth/GetUsers.java">
+package com.schedulecore.ufu.domains.resourses.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+
+import java.util.List;
+
+public interface GetUsers {
+    List<UserModel> execute();
 }
 </file>
 
@@ -1426,6 +1492,18 @@ public interface DeleteGinasio {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/ginasio/GetGinasios.java">
+package com.schedulecore.ufu.domains.resourses.ginasio;
+
+import com.schedulecore.ufu.domains.models.GinasioModel;
+
+import java.util.List;
+
+public interface GetGinasios {
+    List<GinasioModel> execute();
+}
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/domains/resourses/restricao/CreateRestricao.java">
 package com.schedulecore.ufu.domains.resourses.restricao;
 
@@ -1443,6 +1521,18 @@ import com.schedulecore.ufu.domains.inputs.RestricaoInput;
 
 public interface DeleteRestricao {
     void execute(RestricaoInput input);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/restricao/GetRestricoes.java">
+package com.schedulecore.ufu.domains.resourses.restricao;
+
+import com.schedulecore.ufu.domains.models.RestricaoModel;
+
+import java.util.List;
+
+public interface GetRestricoes {
+    List<RestricaoModel> execute();
 }
 </file>
 
@@ -1481,6 +1571,56 @@ public interface GetSchedules {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/auth/AuthenticateImpl.java">
+package com.schedulecore.ufu.domains.usecases.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.ports.AuthPort;
+import com.schedulecore.ufu.domains.resourses.auth.Authenticate;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class AuthenticateImpl implements Authenticate {
+    private final AuthPort authPort;
+
+    @Override
+    public UserModel execute(String token) {
+        if (token == null || token.isEmpty()) {
+            throw new IllegalArgumentException("Token cannot be null or empty");
+        }
+        UserModel user = authPort.authenticateUser(token);
+        if (user == null) throw new AuthenticationCredentialsNotFoundException("Invalid or Expired token");
+        return user;
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/auth/GetUsersImpl.java">
+package com.schedulecore.ufu.domains.usecases.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.resourses.auth.GetUsers;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+@RequiredArgsConstructor
+public class GetUsersImpl implements GetUsers {
+    private final DatabasePort databasePort;
+    @Override
+    public List<UserModel> execute() {
+        return databasePort.findAllUsers();
+    }
+}
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/CreateOrUpdateGinasioImpl.java">
 package com.schedulecore.ufu.domains.usecases.ginasio;
 
@@ -1505,22 +1645,25 @@ public class CreateOrUpdateGinasioImpl implements CreateOrUpdateGinasio {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/DeleteGinasioImpl.java">
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/GetGinasiosImpl.java">
 package com.schedulecore.ufu.domains.usecases.ginasio;
 
+import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
-import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.GetGinasios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-public class DeleteGinasioImpl implements DeleteGinasio {
+public class GetGinasiosImpl implements GetGinasios {
     private final DatabasePort databasePort;
 
     @Override
-    public void execute(String nomeGinasio) {
-        databasePort.deleteGinasio(nomeGinasio);
+    public List<GinasioModel> execute() {
+        return databasePort.findAllGinasios();
     }
 }
 </file>
@@ -1577,6 +1720,28 @@ public class DeleteRestricaoImpl implements DeleteRestricao {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/restricao/GetRestricoesImpl.java">
+package com.schedulecore.ufu.domains.usecases.restricao;
+
+import com.schedulecore.ufu.domains.models.RestricaoModel;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class GetRestricoesImpl implements GetRestricoes {
+    private final DatabasePort databasePort;
+    @Override
+    public List<RestricaoModel> execute() {
+        return databasePort.findAllRestricoes();
+    }
+}
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/domains/usecases/schedule/CreateScheduleImpl.java">
 package com.schedulecore.ufu.domains.usecases.schedule;
 
@@ -1612,31 +1777,25 @@ public class CreateScheduleImpl implements CreateSchedule {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/domains/usecases/schedule/DeleteScheduleImpl.java">
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/schedule/GetAllSchedulesImpl.java">
 package com.schedulecore.ufu.domains.usecases.schedule;
 
-import com.schedulecore.ufu.domains.inputs.DeleteScheduleInput;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
-import com.schedulecore.ufu.domains.ports.EmailSenderPort;
-import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-public class DeleteScheduleImpl implements DeleteSchedule {
+public class GetAllSchedulesImpl implements GetAllSchedules {
     private final DatabasePort databasePort;
-    private final EmailSenderPort emailSenderPort;
 
     @Override
-    public void execute(DeleteScheduleInput input) {
-        String email = databasePort.findScheduleByHorarioAndMounthDayAndGinasio(input.getHorario(), input.getData(), input.getGinasio()).map(ScheduleModel::getEmail).orElseThrow(() -> new IllegalArgumentException("Schedule not found"));
-        databasePort.deleteSchedule(input.getHorario(), input.getData(), input.getGinasio(), input.getMatriculaAluno());
-        emailSenderPort.sendEmail(email,
-                "Seu Agendamento Foi Cancelado - Ginasio: " + input.getGinasio() + " Data: " + input.getData(),
-                "Seu Agendamento foi cancelado das " + input.getHorario() + " na data  " + input.getData() + " no ginásio " + input.getGinasio() + ", podendo ter sido cancelado pelo administrador do sistema."
-        );
+    public List<ScheduleModel> get() {
+        return databasePort.findAllSchedules();
     }
 }
 </file>
@@ -1693,6 +1852,67 @@ public class GetSchedulesImpl implements GetSchedules {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/AdmCreation.java">
+package com.schedulecore.ufu.infrasctructure;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class AdmCreation implements CommandLineRunner {
+    private final DatabasePort databasePort;
+    @Value("${spring.mail.username}")
+    private String email;
+
+    @Override
+    public void run(String... args) throws Exception {
+        databasePort.findUserByEmail(email)
+                .ifPresentOrElse(
+                        user -> {
+                            user.setAcess(AcessEnum.ADMIN);
+                            databasePort.saveUserOrUpdateAdm(user);
+                        },
+                        () -> databasePort.saveUserOrUpdateAdm(
+                                UserModel.builder()
+                                        .email(email)
+                                        .nome("Administrador")
+                                        .matricula("00000ADM000")
+                                        .telefone("0000000000")
+                                        .acess(AcessEnum.ADMIN)
+                                        .build()
+                        )
+                );
+        log.info("Administrador criado ou atualizado com sucesso com o email: {}", email.substring(0,3));
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/request/EmailRequest.java">
+package com.schedulecore.ufu.infrasctructure.api.request;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class EmailRequest {
+    @NotNull
+    private String email;
+    @NotNull
+    private String code;
+}
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/request/RestricaoRequest.java">
 package com.schedulecore.ufu.infrasctructure.api.request;
 
@@ -1722,6 +1942,21 @@ public class RestricaoRequest {
     }
 
 
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/request/TokenRequest.java">
+package com.schedulecore.ufu.infrasctructure.api.request;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class TokenRequest {
+    @NotNull
+    private String token;
 }
 </file>
 
@@ -1763,38 +1998,6 @@ public class RestricaoEntity {
                 .build();
     }
 
-}
-</file>
-
-<file path="src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/UserEntity.java">
-package com.schedulecore.ufu.infrasctructure.database.entitys;
-
-import com.schedulecore.ufu.domains.models.UserModel;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Table(name = "usuarios")
-@Data
-@NoArgsConstructor
-public class UserEntity {
-    @Id
-    private String matricula;
-    private String nome;
-    private String email;
-    private String telefone;
-
-    public UserModel toModel() {
-        return UserModel.builder()
-                .matricula(matricula)
-                .nome(nome)
-                .email(email)
-                .telefone(telefone)
-                .build();
-    }
 }
 </file>
 
@@ -1864,36 +2067,6 @@ public class EmailSenderAdapter implements EmailSenderPort {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/infrasctructure/errorHandler/ErrorHandler.java">
-package com.schedulecore.ufu.infrasctructure.errorHandler;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
-@ControllerAdvice
-@Slf4j
-public class ErrorHandler {
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
-        log.error("Illegal argument exception in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
-    }
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGenericException(Exception ex) {
-        log.error("Unexpected error occurred in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
-        return ResponseEntity
-                .status(HttpStatus.UNPROCESSABLE_ENTITY)
-                .body("Ocorreu um erro inesperado: " + ex.getMessage());
-    }
-}
-</file>
-
 <file path="src/main/java/com/schedulecore/ufu/ScheduleCoreApplication.java">
 package com.schedulecore.ufu;
 
@@ -1932,6 +2105,588 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+</file>
+
+<file path="src/test/Insomnia_2025-07-21.yaml">
+type: collection.insomnia.rest/5.0
+name: schedule-core tests
+meta:
+  id: wrk_e49961b1f73543a4bfc90acf7bd4849f
+  created: 1752861858257
+  modified: 1752861858257
+  description: ""
+collection:
+  - url: localhost:3000/v1/schedule
+    name: My first request
+    meta:
+      id: req_e9fee32203934eb1bcc778750140a3de
+      created: 1750011429579
+      modified: 1752812597726
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429579
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data" : "2025-10-07",
+        	"ginasio" : "Poliesportiva azul"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/schedule
+    name: New Request
+    meta:
+      id: req_24d028e3d94e4e3d862172b3918d1dd8
+      created: 1750294635758
+      modified: 1752812548927
+      isPrivate: false
+      description: ""
+      sortKey: -1750294635759
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data" : "2025-10-08",
+          "horario": "10:00:00",
+          "ginasio": "Poliesportiva azul",
+          "responsavel": "Gabriel Machado",
+          "curso": "Sistema de Informação",
+          "campus": "SANTA_MONICA",
+          "matriculaAluno": "12121BSI227",
+          "telefone": "34999999999",
+        	"email": "grm1003@gmail.com",
+          "quantidadePessoas": 10
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/ginasio
+    name: New Request
+    meta:
+      id: req_bad68d0e1ac94f83b8bd0bdce5e40bf1
+      created: 1750806143562
+      modified: 1752812532213
+      isPrivate: false
+      description: ""
+      sortKey: -1750806143562
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Poliesportiva azul",
+          "campus": "SANTA_MONICA",
+          "startTime": "08:00:00",
+          "endTime": "18:00:00"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/schedule/delete
+    name: New Request
+    meta:
+      id: req_15a21688844f43a39400b7cd54d5c7f2
+      created: 1751026378522
+      modified: 1752812514121
+      isPrivate: false
+      description: ""
+      sortKey: -1751026378522
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data" : "2025-10-08",
+          "horario": "08:00:00",
+          "ginasio": "Poliesportiva azul",
+          "responsavel": "Gabriel Machado",
+          "curso": "Sistema de Informação",
+          "campus": "SANTA_MONICA",
+          "matriculaAluno": "12121BSI227",
+          "telefone": "34999999999",
+        	"email": "grm1003@gmail.com",
+          "quantidadePessoas": 10
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/restricao
+    name: New Request
+    meta:
+      id: req_da11b6c33dc64f5bae15c7442bb30d32
+      created: 1752085655875
+      modified: 1752812482026
+      isPrivate: false
+      description: ""
+      sortKey: -1752085655875
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data" : "2025-12-25",
+        	"ginasio": "Poliesportiva azul",
+        	"descricao": "feriado"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/schedule
+    name: New Request
+    meta:
+      id: req_9f8706205cbb491983a18dccbca4ba1b
+      created: 1752170885805
+      modified: 1752812364665
+      isPrivate: false
+      description: ""
+      sortKey: -1752170885805
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/ginasio
+    name: New Request
+    meta:
+      id: req_d72b488ec65d4b8a8068ff7a30faa672
+      created: 1752171084147
+      modified: 1752812431644
+      isPrivate: false
+      description: ""
+      sortKey: -1752128270840
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/adm/restricao
+    name: New Request
+    meta:
+      id: req_3d1290be73804012900a0e9d7f2df856
+      created: 1752171108890
+      modified: 1752812463766
+      isPrivate: false
+      description: ""
+      sortKey: -1752106963357.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/schedule/12121BSI217
+    name: UserSchedules
+    meta:
+      id: req_6c4ff7ca858f411fb3f721343cb3799c
+      created: 1752171143935
+      modified: 1752812610685
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429529
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+      - name: Authorization
+        value: "{{ _.Authorization }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth
+    name: AuthGereneteToken
+    meta:
+      id: req_7147f955ad9a4d54a522f41fa6f777f7
+      created: 1752809853709
+      modified: 1753120075167
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429429
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "matricula": "12121BSI217",
+          "nome": "Gabriel Machado",
+          "email": "gabriel_machado@ufu.br",
+          "telefone": "34999999999"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: |+
+        
+        const token = insomnia.response.text();
+        insomnia.environment.set("Authorization", `${token}`);
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth/email/send/gabriel_machado@ufu.br
+    name: emailCodeSend
+    meta:
+      id: req_4056a3c3a086441c9e278cba1c41266e
+      created: 1753114168565
+      modified: 1753114212445
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429379
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "matricula": "12121BSI217",
+          "nome": "Gabriel Machado",
+          "email": "gabriel_machado@ufu.br",
+          "telefone": "34999999999"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: |+
+        
+        const token = insomnia.response.text();
+        insomnia.environment.set("Authorization", `Bearer ${token}`);
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth/email/validate
+    name: emailCodeValidate
+    meta:
+      id: req_f895177702eb4623857125e690d15abf
+      created: 1753116412870
+      modified: 1753116523007
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429329
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "gabriel_machado@ufu.br",
+          "code": "212707"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: |+
+        
+        const token = insomnia.response.text();
+        insomnia.environment.set("Authorization", `Bearer ${token}`);
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/v1/auth/validate
+    name: tokenValidate
+    meta:
+      id: req_19f24c21b7244095ae7117414d98ed1f
+      created: 1753119855335
+      modified: 1753120099949
+      isPrivate: false
+      description: ""
+      sortKey: -1750011429279
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "token": "{{ _.Authorization }}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    scripts:
+      preRequest: ""
+      afterResponse: "\n\n"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_90b9b257150c430c840a2ea514422fd2
+    created: 1750011429510
+    modified: 1753120100118
+  cookies:
+    - id: c0c22059-4a61-4096-a9cb-768e832cb709
+      key: JSESSIONID
+      value: E87050085EDDA8992AD87765291EFB07
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      hostOnly: true
+environments:
+  name: Base Environment
+  meta:
+    id: env_832a84d3f7a6432999d531158e6a9c86
+    created: 1750011429491
+    modified: 1753120100121
+    isPrivate: false
+  subEnvironments:
+    - name: "SCHEDULE "
+      meta:
+        id: env_cd1f93de80404fb0b63dc66e26ceabb1
+        created: 1752811623509
+        modified: 1753120100119
+        isPrivate: false
+        sortKey: 1752811623509
+      data:
+        Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnYWJyaWVsX21hY2hhZG9AdWZ1LmJyIiwibWF0cmljdWxhIjoiMTIxMjFCU0kyMTciLCJlbWFpbCI6ImdhYnJpZWxfbWFjaGFkb0B1ZnUuYnIiLCJuYW1lIjoiR2FicmllbCBNYWNoYWRvIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUzMTIwMDk1LCJleHAiOjE3NTMyMDY0OTV9.JfSSSKV5327gsx9DbsjsM1CX43Xba194z_ebgg7YSLM
+        "": ""
+</file>
+
+<file path="src/test/java/com/schedule/ufu/fixtures/inputs/GetSchedulesInputFixture.java">
+package com.schedule.ufu.fixtures.inputs;
+
+
+import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+import lombok.Builder;
+import lombok.Data;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Optional;
+
+@Data
+@Builder
+public class GetSchedulesInputFixture {
+    @Builder.Default
+    private Date data = Date.valueOf(LocalDate.now());
+    @Builder.Default
+    private Optional<String> ginasio = Optional.of("Ufu Ginasio 1");
+
+    public GetSchedulesInput getMock() {
+    return GetSchedulesInput.builder()
+            .data(data)
+            .ginasio(ginasio)
+            .build();
+    }
+}
+</file>
+
+<file path="src/test/java/com/schedule/ufu/usecases/GetSchedulesImplTest.java">
+package com.schedule.ufu.usecases;
+
+import com.schedule.ufu.fixtures.inputs.GetSchedulesInputFixture;
+import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+import com.schedulecore.ufu.domains.models.GinasioModel;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.usecases.schedule.GetSchedulesImpl;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.sql.Time;
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+public class GetSchedulesImplTest {
+    @Mock
+    private DatabasePort databasePort;
+    @InjectMocks
+    private GetSchedulesImpl getSchedulesImpl;
+
+    @Test
+    public void testGetSchedulesExistingGinasio() {
+        when(databasePort.findSchedulesByGinasioAndMonthAndDay(any(), any())).thenReturn(List.of());
+        when(databasePort.findGinasioById(any())).thenReturn(Optional.ofNullable(GinasioModel.builder()
+                .nome("Ufu Ginasio 1")
+                .campus("Campus 1")
+                .startTime(Time.valueOf("08:00:00"))
+                .endTime(Time.valueOf("09:00:00"))
+                .build()));
+        List<ScheduleModel> list = getSchedulesImpl.get(GetSchedulesInputFixture.builder().build().getMock());
+        verify(databasePort).findSchedulesByGinasioAndMonthAndDay(any(), any());
+        verify(databasePort).findGinasioById(any());
+        Assertions.assertEquals(list.size(),1);
+    }
+
+    @Test
+    public void testGetSchedulesNotExistingGinasio() {
+        when(databasePort.findSchedulesByMonthAndDay(any())).thenReturn(List.of());
+        List<ScheduleModel> list = getSchedulesImpl.get(GetSchedulesInputFixture.builder().ginasio(Optional.empty()).build().getMock());
+        verify(databasePort).findSchedulesByMonthAndDay(any());
+        Assertions.assertEquals(list.size(),0);
+    }
+}
 </file>
 
 <file path="src/main/java/com/schedulecore/ufu/domains/chainresponsibility/newschedule/DateValidator.java">
@@ -2002,6 +2757,192 @@ public enum CampusEnum {
             }
         }
         return null;
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/models/UserModel.java">
+package com.schedulecore.ufu.domains.models;
+
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class UserModel {
+    private String matricula;
+    private String nome;
+    private String email;
+    private String telefone;
+    private AcessEnum acess;
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/schedule/GetAllSchedules.java">
+package com.schedulecore.ufu.domains.resourses.schedule;
+
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+
+import java.util.List;
+
+public interface GetAllSchedules {
+    List<ScheduleModel> get();
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/schedule/GetUserSchedules.java">
+package com.schedulecore.ufu.domains.resourses.schedule;
+
+import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+
+import java.util.List;
+
+public interface GetUserSchedules {
+    List<ScheduleModel> get(String matricula);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/auth/GenerateAuthImpl.java">
+package com.schedulecore.ufu.domains.usecases.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.ports.AuthPort;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.resourses.auth.GenerateAuth;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class GenerateAuthImpl implements GenerateAuth {
+    private final DatabasePort databasePort;
+    private final AuthPort authPort;
+
+    @Override
+    public String execute(UserModel user) {
+        if (user == null || user.getEmail() == null || user.getEmail().isEmpty()) {
+            throw new IllegalArgumentException("User and email cannot be null or empty");
+        }
+        databasePort.saveUserOrUpdateUser(user);
+        return authPort.generateAuthToken(databasePort.findUserByEmail(user.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("User not found")));
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/ginasio/DeleteGinasioImpl.java">
+package com.schedulecore.ufu.domains.usecases.ginasio;
+
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class DeleteGinasioImpl implements DeleteGinasio {
+    private final DatabasePort databasePort;
+
+    @Override
+    public void execute(String nomeGinasio) {
+        if(nomeGinasio == null || nomeGinasio.isEmpty()) {
+            throw new IllegalArgumentException("Nome do ginásio não pode ser nulo ou vazio");
+        }
+        databasePort.deleteGinasio(nomeGinasio);
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/schedule/DeleteScheduleImpl.java">
+package com.schedulecore.ufu.domains.usecases.schedule;
+
+import com.schedulecore.ufu.domains.inputs.DeleteScheduleInput;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.ports.EmailSenderPort;
+import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.Date;
+
+@Service
+@RequiredArgsConstructor
+public class DeleteScheduleImpl implements DeleteSchedule {
+    private final DatabasePort databasePort;
+    private final EmailSenderPort emailSenderPort;
+    @Value("${spring.mail.subjectDelete}")
+    private String subjectDelete;
+    @Value("${spring.mail.bodyDelete}")
+    private String bodyDelete;
+
+    @Override
+    public void execute(DeleteScheduleInput input) {
+        String email = databasePort.findScheduleByHorarioAndMounthDayAndGinasio(input.getHorario(), input.getData(), input.getGinasio()).map(ScheduleModel::getEmail).orElseThrow(() -> new IllegalArgumentException("Schedule not found"));
+        databasePort.deleteSchedule(input.getHorario(), input.getData(), input.getGinasio(), input.getMatriculaAluno());
+        if(input.getData().after(Date.from(Instant.now()))) {
+            emailSenderPort.sendEmail(email,
+                    subjectDelete + "Data: " + input.getData() + " Horário: " + input.getHorario() + " Ginasio: " + input.getGinasio(),
+                    bodyDelete + input);
+        }
+
+
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/schedule/GetUserSchedulesImpl.java">
+package com.schedulecore.ufu.domains.usecases.schedule;
+
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.ports.DatabasePort;
+import com.schedulecore.ufu.domains.resourses.schedule.GetUserSchedules;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class GetUserSchedulesImpl implements GetUserSchedules {
+    private final DatabasePort databasePort;
+
+    @Override
+    public List<ScheduleModel> get(String matricula) {
+        if(matricula == null || matricula.isEmpty()) {
+            throw new IllegalArgumentException("Matrícula não pode ser nula ou vazia");
+        }
+        return databasePort.findUserSchedules(matricula);
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/cors/CorsConfig.java">
+package com.schedulecore.ufu.infrasctructure.api.cors;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class CorsConfig {
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
+            }
+        };
     }
 }
 </file>
@@ -2078,197 +3019,306 @@ public class DeleteScheduleRequest {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/GinasioEntity.java">
-package com.schedulecore.ufu.infrasctructure.database.entitys;
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/request/GerenateAuthRequest.java">
+package com.schedulecore.ufu.infrasctructure.api.request;
 
-import com.schedulecore.ufu.domains.models.GinasioModel;
-import jakarta.persistence.*;
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.sql.Time;
-import java.util.Optional;
-
-@Entity
 @Data
-@NoArgsConstructor
-@Table(name = "ginasios")
-public class GinasioEntity {
-    @Id
+@Builder
+public class GerenateAuthRequest {
+    @NotNull
+    private String matricula;
+    @NotNull
     private String nome;
-    private String campus;
-    private Time startTime;
-    private Time endTime;
+    @NotNull
+    @Email
+    private String email;
+    @NotNull
+    private String telefone;
 
-    public Optional<GinasioModel> toModel() {
-        return Optional.of(GinasioModel.builder()
+    public UserModel toUserModel() {
+        return UserModel.builder()
+                .matricula(matricula)
                 .nome(nome)
-                .campus(campus)
-                .startTime(startTime)
-                .endTime(endTime)
-                .build());
+                .email(email)
+                .telefone(telefone)
+                .acess(AcessEnum.USER)
+                .build();
     }
 }
 </file>
 
-<file path="src/test/firstcolletion.yaml">
-type: collection.insomnia.rest/5.0
-name: My first collection
-meta:
-  id: wrk_17f25e828ffa43d7b43b60335c138c57
-  created: 1750011429478
-  modified: 1750011429478
-  description: ""
-collection:
-  - url: localhost:3000/v1/schedule
-    name: My first request
-    meta:
-      id: req_bf1ee3c1313d4e50bb1c38389e14f08d
-      created: 1750011429579
-      modified: 1751505435362
-      isPrivate: false
-      description: ""
-      sortKey: -1750011429579
-    method: GET
-    body:
-      mimeType: application/json
-      text: |-
-        {
-          "data" : "2025-03-10",
-        	"ginasio" : "Poliesportiva azul"
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/auth/AuthService.java">
+package com.schedulecore.ufu.infrasctructure.auth;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.interfaces.JWTVerifier;
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import jakarta.security.auth.message.AuthException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Date;
+
+;
+
+@Service
+public class AuthService {
+    @Value("${spring.mail.username}")
+    private String email;
+    private static final long EXPIRATION = 1000 * 60 * 60 * 24; // 24 horas (1 dia)
+
+    public String generateToken(UserModel model) {
+        return JWT.create()
+                .withSubject(model.getEmail())
+                .withClaim("matricula", model.getMatricula())
+                .withClaim("email", model.getEmail())
+                .withClaim("name", model.getNome())
+                .withClaim("role", model.getAcess().name())
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION))
+                .sign(Algorithm.HMAC256(hashEmail(email)));
+    }
+
+    public UserModel parseToken(String token){
+        try {
+            DecodedJWT decoded = getVerifier().verify(token);
+            return UserModel.builder()
+                    .email(decoded.getClaim("email").asString())
+                    .matricula(decoded.getClaim("matricula").asString())
+                    .nome(decoded.getClaim("name").asString())
+                    .acess(AcessEnum.valueOf(decoded.getClaim("role").asString()))
+                    .build();
+        } catch (JWTVerificationException e) {
+            return null;
         }
-    headers:
-      - name: Content-Type
-        value: application/json
-      - name: User-Agent
-        value: insomnia/11.2.0
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: localhost:3000/v1/schedule
-    name: New Request
-    meta:
-      id: req_9cd8a1e68235440091390f31546fed76
-      created: 1750294635758
-      modified: 1751510106154
-      isPrivate: false
-      description: ""
-      sortKey: -1750294635759
-    method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        {
-          "data" : "2025-03-10",
-          "horario": "17:00:00",
-          "ginasio": "Poliesportiva azul",
-          "responsavel": "Felipe Machado",
-          "curso": "Sistema de Informação",
-          "campus": "SANTA_MONICA",
-          "matriculaAluno": "12121BSI227",
-          "telefone": "34999999999",
-          "quantidadePessoas": 10
+    }
+
+    public String hashEmail(String email) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(email.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(hash);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Erro ao gerar hash do e-mail", e);
         }
-    headers:
-      - name: Content-Type
-        value: application/json
-      - name: User-Agent
-        value: insomnia/11.2.0
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: localhost:3000/v1/adm/ginasio
-    name: New Request
-    meta:
-      id: req_1f0f5027ea4a4b5db3d1c908f522d712
-      created: 1750806143562
-      modified: 1751503177533
-      isPrivate: false
-      description: ""
-      sortKey: -1750806143562
-    method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        {
-          "nome": "Poliesportiva azul",
-          "campus": "SANTA_MONICA",
-          "startTime": "08:00:00",
-          "endTime": "18:00:00"
-        }
-    headers:
-      - name: Content-Type
-        value: application/json
-      - name: User-Agent
-        value: insomnia/11.2.0
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: localhost:3000/v1/schedule/delete
-    name: New Request
-    meta:
-      id: req_00e4f26cc4d648a0bc20c07f45275f65
-      created: 1751026378522
-      modified: 1751510204749
-      isPrivate: false
-      description: ""
-      sortKey: -1751026378522
-    method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        {
-          "data" : "2025-03-10",
-          "horario": "17:00:00",
-          "ginasio": "Poliesportiva azul",
-          "responsavel": "Gabriel Machado",
-          "curso": "Sistema de Informação",
-          "campus": "SANTA_MONICA",
-          "matriculaAluno": "12121BSI227",
-          "telefone": "34999999999",
-          "quantidadePessoas": 10
-        }
-    headers:
-      - name: Content-Type
-        value: application/json
-      - name: User-Agent
-        value: insomnia/11.2.0
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-cookieJar:
-  name: Default Jar
-  meta:
-    id: jar_6d338c41f0305cca792a23d09baeae1fd2c59a65
-    created: 1750011429510
-    modified: 1750011429510
-environments:
-  name: Base Environment
-  meta:
-    id: env_6d338c41f0305cca792a23d09baeae1fd2c59a65
-    created: 1750011429491
-    modified: 1750011429491
-    isPrivate: false
+    }
+
+    private JWTVerifier getVerifier() {
+        Algorithm algorithm = Algorithm.HMAC256(hashEmail(email));
+        return JWT.require(algorithm).build();
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/UserEntity.java">
+package com.schedulecore.ufu.infrasctructure.database.entitys;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
+
+@Entity
+@Table(name = "usuarios")
+@Data
+@NoArgsConstructor
+public class UserEntity {
+    @Id
+    private String email;
+    private String matricula;
+    private String nome;
+    private String telefone;
+    private String role;
+
+    public UserModel toModel() {
+        return UserModel.builder()
+                .matricula(matricula)
+                .nome(nome)
+                .email(email)
+                .telefone(telefone)
+                .acess(AcessEnum.valueOf(role))
+                .build();
+    }
+}
+</file>
+
+<file path="README.md">
+# Schedule-Core UFU
+
+## 🎯 Sobre o Projeto
+
+**Schedule-Core** é o backend da plataforma de agendamento de espaços esportivos para a Universidade Federal de Uberlândia (UFU). O projeto foi desenvolvido com o objetivo de modernizar e automatizar o processo de reserva de ginásios e quadras, que antes era realizado de forma manual e burocrática.
+
+A aplicação centraliza a consulta de horários e a realização de agendamentos, reduzindo a carga de trabalho administrativo e prevenindo conflitos de horários.
+
+## ✨ Funcionalidades Principais
+
+  * **Gestão de Agendamentos:**
+      * Criar, consultar e cancelar agendamentos.
+      * Listar todos os agendamentos de um usuário específico.
+      * Visualizar a grade de horários por dia e por ginásio.
+  * **Administração de Espaços:**
+      * Cadastrar e remover ginásios e outros espaços esportivos.
+      * Definir restrições de datas (ex: feriados, eventos) para impedir agendamentos.
+  * **Notificações:**
+      * Envio de e-mails automáticos para confirmar o cancelamento de uma reserva.
+  * **Validação de Regras de Negócio:**
+      * Utiliza uma cadeia de validações (Chain of Responsibility) para garantir a integridade dos agendamentos, verificando duplicidade, restrições de data, horário de funcionamento do ginásio e outros.
+
+## 🔐 Autenticação e Autorização (JWT + Spring Security)
+
+A API utiliza autenticação via **JWT (JSON Web Token)** combinada com **Spring Security**, com as seguintes características:
+
+- **Login e Geração de Token:**
+  - O endpoint `/auth/token` permite autenticação de usuários cadastrados e retorna um JWT assinado com SHA-256.
+  - O token contém claims como `matricula`, `email`, `name` e `role`, com validade de 2 horas.
+
+- **Proteção de Rotas:**
+  - Endpoints públicos: `/auth/**`
+  - Endpoints autenticados: `/v1/schedule/**`
+  - Endpoints restritos ao papel `ADMIN`: `/v1/adm/**`
+
+- **Validação de Token:**
+  - Tokens são validados via filtro personalizado (`JwtAuthenticationFilter`) usando `java-jwt` (Auth0).
+  - A assinatura é feita com base em um hash SHA-256 do e-mail institucional (`spring.mail.username`), aumentando a segurança.
+
+- **Criação Automática de Administrador:**
+  - Ao iniciar a aplicação, um usuário administrador é criado automaticamente caso ainda não exista no banco. O e-mail é definido em `spring.mail.username` e recebe o papel `ADMIN`.
+
+### Endpoints de Autenticação (`/auth`)
+
+| Método | Rota           | Descrição |
+|--------|----------------|-----------|
+| `POST` | `/auth/email`  | Envia um código de verificação para o e-mail institucional informado. |
+| `POST` | `/auth/verify` | Valida o código enviado por e-mail e cria/atualiza o usuário. Retorna um JWT válido. |
+| `POST` | `/auth/token`  | Gera um novo JWT para um usuário já registrado com e-mail `@ufu.br`. |
+| `GET`  | `/auth/user`   | Retorna os dados do usuário autenticado com base no token enviado no header. |
+
+#### 🔐 Fluxo completo de autenticação:
+
+1. O usuário envia seu e-mail institucional no endpoint `/auth/email`:
+```json
+{ "email": "usuario@ufu.br" }
+```
+2. O usuário recebe um código por e-mail e o envia para `/auth/verify`:
+```json
+{ "email": "usuario@ufu.br", "codigo": "123456" }
+```
+3. O sistema retorna um token JWT válido. Para renovar, o usuário pode usar `/auth/token`:
+```json
+{ "email": "usuario@ufu.br" }
+```
+4. Para consultar dados do usuário autenticado:
+```
+GET /auth/user
+Authorization: Bearer <token>
+```
+
+## 🛠️ Tecnologias Utilizadas
+
+  * **Backend:** Java 17, Spring Boot 3.5.0
+  * **Segurança:** Spring Security, Auth0 Java JWT
+  * **Banco de Dados:** PostgreSQL
+  * **Gerenciador de Dependências:** Maven
+  * **Containerização:** Docker (via `docker-compose.yml`)
+
+## 🏗️ Arquitetura: Ports and Adapters (Hexagonal)
+
+O projeto foi estruturado seguindo o padrão de **Arquitetura Hexagonal**, que isola a lógica de negócio de dependências externas e facilita a manutenção e testabilidade do sistema.
+
+  * **Hexágono (Core do Domínio):**
+      * Localizado no pacote `domains`, contém a lógica de negócio pura e agnóstica a tecnologias.
+      * **`ports`**: Define as interfaces (Portas) que o domínio usa para se comunicar com o mundo exterior.
+
+  * **Adaptadores (Infrastructure):**
+      * O pacote `infrasctructure` contém as implementações concretas das portas.
+      * **Inbound:** Controllers REST (ex: `ScheduleController`).
+      * **Outbound:** Banco de dados, e-mail, etc.
+
+## 🧪 Testes
+
+Atualmente, o projeto **não possui uma suíte de testes unitários ou de integração automatizados**.
+
+Os testes funcionais da API são realizados através da collection do **Insomnia**, que pode ser encontrada no arquivo: `src/test/Insomnia_2025-07-10.yaml`. Esta collection contém requisições prontas para todos os endpoints da aplicação, facilitando a validação manual do comportamento esperado.
+
+## 🗺️ API Endpoints
+
+A API está versionada sob o prefixo `/v1`. Abaixo estão os endpoints principais.
+
+### Agendamentos (`/v1/schedule`)
+
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/schedule` | Busca horários disponíveis e agendados para uma data. |
+| `POST` | `/schedule` | Cria um novo agendamento. |
+| `POST` | `/schedule/delete` | Cancela um agendamento existente. |
+| `GET` | `/schedule/{matricula}` | Retorna todos os agendamentos de um usuário. |
+
+### Administração (`/v1/adm`)
+
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/ginasio` | Cria ou atualiza um ginásio. |
+| `GET` | `/ginasio` | Lista todos os ginásios. |
+| `POST` | `/ginasio/delete/{id}` | Remove um ginásio. |
+| `POST` | `/restricao` | Adiciona uma restrição de data em um ginásio. |
+| `GET` | `/restricao` | Lista todas as restrições. |
+| `GET` | `/schedule` | Lista todos os agendamentos do sistema. |
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+  * [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) ou superior
+  * [Apache Maven](https://maven.apache.org/download.cgi)
+  * [Docker](https://www.docker.com/products/docker-desktop/) e Docker Compose
+
+### Passos
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/chado-ma/schedule-core.git
+cd schedule-core
+```
+
+2. **Inicie o banco de dados com Docker:**
+```bash
+docker-compose up -d
+```
+
+3. **Configure as variáveis de ambiente:**
+- `spring.mail.username`: E-mail institucional do administrador (também usado para assinar tokens).
+- `spring.mail.password`: Senha do e-mail.
+
+4. **Execute a aplicação:**
+```bash
+mvn spring-boot:run
+```
+
+A aplicação estará disponível em `http://localhost:3000`.
+
+## 👨‍💻 Autor
+
+  * **Gabriel Rezende Machado**
 </file>
 
 <file path="src/main/java/com/schedulecore/ufu/domains/chainresponsibility/newschedule/GinasioValidator.java">
@@ -2326,6 +3376,322 @@ public class NewSchedule {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/domains/resourses/auth/EmailValidatorAcess.java">
+package com.schedulecore.ufu.domains.resourses.auth;
+
+public interface EmailValidatorAcess {
+     void sendValidationEmail(String email);
+     void execute(String email, String code);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/domains/usecases/auth/EmailValidatorAcessImpl.java">
+package com.schedulecore.ufu.domains.usecases.auth;
+
+import com.schedulecore.ufu.domains.ports.EmailSenderPort;
+import com.schedulecore.ufu.domains.resourses.auth.EmailValidatorAcess;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class EmailValidatorAcessImpl implements EmailValidatorAcess {
+    private static final Integer CODE_LENGTH = 6;
+    private final EmailSenderPort emailSenderPort;
+    @Value("${spring.mail.subjectAuth}")
+    private String subjectAuth;
+    @Value("${spring.mail.bodyAuth}")
+    private String bodyAuth;
+    private final Map<String, String> emailCodeMap = new ConcurrentHashMap<>();
+
+    @Override
+    public void sendValidationEmail(String email) {
+        if(email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+        String code = gerarCodigoNumerico();
+        if (!emailCodeMap.containsKey(email)) {
+            emailSenderPort.sendEmail(email,
+                    subjectAuth + "Email de validação",
+                    bodyAuth + code);
+            emailCodeMap.put(email, code);
+            log.info("Validation email sent to {} with code start {}", email, code.substring(0, 2));
+        } else {
+            log.warn("Email {} already has a validation code, not sending again", email);
+        }
+    }
+
+    @Override
+    public void execute(String email, String code) {
+        boolean isValid = emailCodeMap.containsKey(email) &&
+                emailCodeMap.get(email).equals(code);
+        if (!isValid) throw new AuthenticationCredentialsNotFoundException("Code inválido");
+       emailCodeMap.remove(email);
+    }
+
+    private String gerarCodigoNumerico() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder(CODE_LENGTH);
+        for (int i = 0; i < CODE_LENGTH; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/AuthController.java">
+package com.schedulecore.ufu.infrasctructure.api.v1;
+
+import com.schedulecore.ufu.domains.models.GinasioModel;
+import com.schedulecore.ufu.domains.models.RestricaoModel;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.resourses.auth.Authenticate;
+import com.schedulecore.ufu.domains.resourses.auth.EmailValidatorAcess;
+import com.schedulecore.ufu.domains.resourses.auth.GenerateAuth;
+import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.GetGinasios;
+import com.schedulecore.ufu.domains.resourses.restricao.CreateRestricao;
+import com.schedulecore.ufu.domains.resourses.restricao.DeleteRestricao;
+import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
+import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
+import com.schedulecore.ufu.infrasctructure.api.request.*;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+@RequestMapping("/v1/auth")
+public class AuthController {
+    private final Authenticate authenticate;
+    private final EmailValidatorAcess emailValidatorAcess;
+    private final GenerateAuth generateAuth;
+
+    @PostMapping("")
+    public String generateAuth(@RequestBody @Valid GerenateAuthRequest request) {
+        log.info("Received request for generateAuth: {}", request);
+        return generateAuth.execute(request.toUserModel());
+    }
+
+    @PostMapping("/validate")
+    public UserModel authenticate(@RequestBody @Valid TokenRequest request) {
+        log.info("Received request for authenticate: {}", request);
+        return authenticate.execute(request.getToken());
+    }
+
+    @PostMapping("/email/validate")
+    public void emailValidate(@RequestBody @Valid EmailRequest request) {
+        log.info("Received request for emailValidate: {}", request);
+        emailValidatorAcess.execute(request.getEmail(), request.getCode());
+    }
+
+    @PostMapping("/email/send/{email}")
+    public void emailCodeSend(@PathVariable("email") String email) {
+        log.info("Received request for emailCodeSend: {}", email);
+        emailValidatorAcess.sendValidationEmail(email);
+    }
+
+
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/auth/AuthAdapter.java">
+package com.schedulecore.ufu.infrasctructure.auth;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.ports.AuthPort;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class AuthAdapter implements AuthPort {
+    private final AuthService authService;
+    @Override
+    public String generateAuthToken(UserModel user) {
+        log.info("Generating auth token for user: {}", user.getEmail());
+        return authService.generateToken(user);
+    }
+
+    @Override
+    public UserModel authenticateUser(String token) {
+        log.info("Authenticating user with token startig with: {}", token.substring(0, 5));
+        return authService.parseToken(token);
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/auth/config/JwtAuthenticationFilter.java">
+package com.schedulecore.ufu.infrasctructure.auth.config;
+
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.models.enums.AcessEnum;
+import com.schedulecore.ufu.domains.ports.AuthPort;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.util.List;
+
+@Component
+@RequiredArgsConstructor
+@Slf4j
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    private final AuthPort authPort;
+        @Override
+        protected void doFilterInternal(HttpServletRequest request,
+                HttpServletResponse response,
+                FilterChain filterChain) throws ServletException, IOException {
+
+            if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+                filterChain.doFilter(request, response);
+                return;
+            }
+
+            String authHeader = request.getHeader("Authorization");
+            String token;
+            if (authHeader != null) {
+                if (authHeader.startsWith("Bearer ")) {
+                    token = authHeader.substring(7);
+                } else {
+                    token = authHeader;
+                }
+                UserModel username = validateTokenAndGetUsername(token);
+                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    List<SimpleGrantedAuthority> userAuthorities = List.of(new SimpleGrantedAuthority("ROLE_" + username.getAcess().name()));
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(username.getEmail(), username.getAcess(), userAuthorities);
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                    log.info("User authenticated: {}", username.getEmail());
+                }
+            } else {
+                log.warn("Authorization header is missing");
+            }
+            filterChain.doFilter(request, response);
+        }
+
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return path.startsWith("/v1/auth");
+    }
+
+    private UserModel validateTokenAndGetUsername(String token) {
+        return authPort.authenticateUser(token);
+    }
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/auth/config/SecurityConfig.java">
+package com.schedulecore.ufu.infrasctructure.auth.config;
+
+import com.schedulecore.ufu.domains.ports.AuthPort;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+    private final AuthPort authPort;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .cors(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/v1/adm/**").hasRole("ADMIN")
+                        .requestMatchers("/v1/schedule/**").authenticated()
+                        .requestMatchers("/v1/auth/**").permitAll()
+                        .anyRequest().permitAll()
+                )
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .httpBasic(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable);
+
+        return http.build();
+    }
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter(authPort);
+    }
+
+
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/database/entitys/GinasioEntity.java">
+package com.schedulecore.ufu.infrasctructure.database.entitys;
+
+import com.schedulecore.ufu.domains.models.GinasioModel;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Time;
+import java.util.Optional;
+
+@Entity
+@Data
+@NoArgsConstructor
+@Table(name = "ginasios")
+public class GinasioEntity {
+    @Id
+    private String nome;
+    private String campus;
+    private Time startTime;
+    private Time endTime;
+
+    public GinasioModel toModel() {
+        return GinasioModel.builder()
+                .nome(nome)
+                .campus(campus)
+                .startTime(startTime)
+                .endTime(endTime)
+                .build();
+    }
+}
+</file>
+
 <file path="docker-compose.yml">
 services:
   postgres:
@@ -2346,83 +3712,6 @@ services:
 networks:
   schedule-network:
     driver: bridge
-</file>
-
-<file path="pom.xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
-		<relativePath/>
-	</parent>
-	<groupId>com.schedule-core</groupId>
-	<artifactId>ufu</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ufu</name>
-	<description>Schedule Core in UFU</description>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-</project>
 </file>
 
 <file path="src/main/java/com/schedulecore/ufu/domains/inputs/CreateScheduleInput.java">
@@ -2542,53 +3831,154 @@ public class NewScheduleRequest {
 }
 </file>
 
-<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/AdmController.java">
-package com.schedulecore.ufu.infrasctructure.api.v1;
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/errorHandler/ErrorHandler.java">
+package com.schedulecore.ufu.infrasctructure.errorHandler;
 
-import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
-import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
-import com.schedulecore.ufu.domains.resourses.restricao.CreateRestricao;
-import com.schedulecore.ufu.domains.resourses.restricao.DeleteRestricao;
-import com.schedulecore.ufu.infrasctructure.api.request.CreateGinasioRequest;
-import com.schedulecore.ufu.infrasctructure.api.request.RestricaoRequest;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@RestController
-@RequiredArgsConstructor
+@ControllerAdvice
 @Slf4j
-@RequestMapping("/v1/adm")
-public class AdmController {
-    private final CreateOrUpdateGinasio createOrUpdateGinasio;
-    private final DeleteGinasio deleteGinasio;
-    private final CreateRestricao createRestricao;
-    private final DeleteRestricao deleteRestricao;
+public class ErrorHandler {
 
-    @PostMapping("/ginasio")
-    public void createOrUpdateGinasio(@RequestBody CreateGinasioRequest request) {
-        log.info("Received request for createOrUpdateGinasio: {}", request);
-        createOrUpdateGinasio.execute(request.toInput());
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
+        log.error("Illegal argument exception in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ex.getMessage());
     }
 
-    @PostMapping("/ginasio/delete/{id}")
-    public void deleteGinasio(@PathVariable("id") String id) {
-        log.info("Received request for deleteGinasio: {}", id);
-        deleteGinasio.execute(id);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<String> handleIllegalArgument(MethodArgumentNotValidException ex) {
+        log.error("MethodArgumentNotValidException in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ex.getLocalizedMessage());
     }
 
-    @PostMapping("/restricao")
-    public void createRestricao(@RequestBody RestricaoRequest request) {
-        log.info("Received request for createRestricao: {}", request);
-        createRestricao.execute(request.toInput());
-    }
-    @PostMapping("/restricao/delete")
-    public void deleteRestricao(@RequestBody RestricaoRequest request) {
-        log.info("Received request for deleteRestricao: {}", request);
-        deleteRestricao.execute(request.toInput());
+    @ExceptionHandler(AuthenticationCredentialsNotFoundException.class)
+    public ResponseEntity<String> handleIllegalArgument(AuthenticationCredentialsNotFoundException ex) {
+        log.error("AuthenticationCredentialsNotFoundException argument exception in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(ex.getMessage());
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericException(Exception ex) {
+        log.error("Unexpected error occurred in class {} in {}: {}", ex.getStackTrace()[0].getClassName(), ex.getStackTrace()[0].getMethodName(), ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .body("Ocorreu um erro inesperado: " + ex.getMessage());
+    }
 }
+</file>
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.0</version>
+		<relativePath/>
+	</parent>
+	<groupId>com.schedule-core</groupId>
+	<artifactId>ufu</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ufu</name>
+	<description>Schedule Core in UFU</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- JWT Resource Server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
+		<!-- JWT Token Parsing -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>4.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
 </file>
 
 <file path="src/main/java/com/schedulecore/ufu/domains/models/ScheduleModel.java">
@@ -2681,26 +4071,6 @@ public class ReservaEntity {
 }
 </file>
 
-<file path="src/main/resources/application.yml">
-spring:
-    application:
-        name: schedulecore
-    mail:
-        host: smtp.office365.com
-        port: 587
-        username: ${email}
-        password: ${senha}
-        properties:
-            mail:
-                smtp:
-                    auth: true
-                    starttls:
-                        enable: true
-
-server:
-    port: 3000
-</file>
-
 <file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/request/ScheduleRequest.java">
 package com.schedulecore.ufu.infrasctructure.api.request;
 
@@ -2720,6 +4090,111 @@ public class ScheduleRequest {
 }
 </file>
 
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/AdmController.java">
+package com.schedulecore.ufu.infrasctructure.api.v1;
+
+import com.schedulecore.ufu.domains.models.GinasioModel;
+import com.schedulecore.ufu.domains.models.RestricaoModel;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.resourses.auth.GetUsers;
+import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
+import com.schedulecore.ufu.domains.resourses.ginasio.GetGinasios;
+import com.schedulecore.ufu.domains.resourses.restricao.CreateRestricao;
+import com.schedulecore.ufu.domains.resourses.restricao.DeleteRestricao;
+import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
+import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
+import com.schedulecore.ufu.infrasctructure.api.request.CreateGinasioRequest;
+import com.schedulecore.ufu.infrasctructure.api.request.RestricaoRequest;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+@RequestMapping("/v1/adm")
+public class AdmController {
+    private final CreateOrUpdateGinasio createOrUpdateGinasio;
+    private final DeleteGinasio deleteGinasio;
+    private final CreateRestricao createRestricao;
+    private final DeleteRestricao deleteRestricao;
+    private final GetRestricoes getRestricoes;
+    private final GetAllSchedules getAllSchedules;
+    private final GetUsers getUsers;
+
+    @PostMapping("/ginasio")
+    public void createOrUpdateGinasio(@RequestBody @Valid CreateGinasioRequest request) {
+        log.info("Received request for createOrUpdateGinasio: {}", request);
+        createOrUpdateGinasio.execute(request.toInput());
+    }
+
+    @PostMapping("/ginasio/delete/{id}")
+    public void deleteGinasio(@PathVariable("id") String id) {
+        log.info("Received request for deleteGinasio: {}", id);
+        deleteGinasio.execute(id);
+    }
+
+    @GetMapping("/restricao")
+    public List<RestricaoModel> getRestricao() {
+        log.info("Received request for getRestricao");
+        return getRestricoes.execute();
+    }
+
+    @GetMapping("/schedule")
+    private List<ScheduleModel> getAllSchedules() {
+        log.info("Received request for getAllSchedules");
+        return getAllSchedules.get();
+    }
+
+    @GetMapping("/users")
+    private List<UserModel> getAllUsers() {
+        log.info("Received request for getAllUsers");
+        return getUsers.execute();
+    }
+
+    @PostMapping("/restricao")
+    public void createRestricao(@RequestBody @Valid RestricaoRequest request) {
+        log.info("Received request for createRestricao: {}", request);
+        createRestricao.execute(request.toInput());
+    }
+    @PostMapping("/restricao/delete")
+    public void deleteRestricao(@RequestBody @Valid RestricaoRequest request) {
+        log.info("Received request for deleteRestricao: {}", request);
+        deleteRestricao.execute(request.toInput());
+    }
+
+}
+</file>
+
+<file path="src/main/resources/application.yml">
+spring:
+    application:
+        name: schedulecore
+    mail:
+        subjectDelete: "Seu Agendamento Foi Cancelado - "
+        bodyDelete: "Seu Agendamento foi cancelado por você ou pelo administrador do sistema, por favor, em caso de dúvidas entrar em contato com time resposável. \n Dados do agendamento:\n"
+        subjectAuth: "Código de Autenticação - "
+        bodyAuth: "Código autenticação email UFU. \n Código (EmailCode):\n"
+        host: smtp.office365.com
+        port: 587
+        username: ${email}
+        password: ${senha}
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+
+server:
+    port: 3000
+</file>
+
 <file path="src/main/java/com/schedulecore/ufu/infrasctructure/database/repositorys/ReservaRepository.java">
 package com.schedulecore.ufu.infrasctructure.database.repositorys;
 
@@ -2735,11 +4210,88 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
 
     List<ReservaEntity> findAllByData(Date data);
 
-    List<ReservaEntity> findAllByMatriculaAluno(String matricula);
+    List<ReservaEntity> findByMatriculaAluno(String matricula);
 
     ReservaEntity findByGinasioAndHorarioAndData(String ginasio, Time horario, Date data);
 
     void deleteByHorarioAndGinasioAndDataAndMatriculaAluno(Time horario, String ginasio, Date data, String matriculaAluno);
+}
+</file>
+
+<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/ScheduleController.java">
+package com.schedulecore.ufu.infrasctructure.api.v1;
+
+import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+import com.schedulecore.ufu.domains.models.GinasioModel;
+import com.schedulecore.ufu.domains.models.ScheduleModel;
+import com.schedulecore.ufu.domains.resourses.ginasio.GetGinasios;
+import com.schedulecore.ufu.domains.resourses.schedule.CreateSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
+import com.schedulecore.ufu.domains.resourses.schedule.GetSchedules;
+import com.schedulecore.ufu.domains.resourses.schedule.GetUserSchedules;
+import com.schedulecore.ufu.infrasctructure.api.request.DeleteScheduleRequest;
+import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
+import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+@RequestMapping("/v1/schedule")
+public class ScheduleController {
+    private final GetSchedules getSchedules;
+    private final CreateSchedule createSchedule;
+    private final DeleteSchedule deleteSchedule;
+    private final GetUserSchedules getUserSchedules;
+    private final GetGinasios getGinasios;
+
+    @GetMapping("/teste")
+    public String teste() {
+        log.info("Received request for teste endpoint");
+        return "Schedule UFU Core is running";
+    }
+
+    @GetMapping("")
+    public List<ScheduleModel> getSchedule(@RequestBody @Valid ScheduleRequest request) {
+        log.info("Received request for getSchedule: {}", request);
+        return getSchedules.get(GetSchedulesInput.builder()
+                .data(Date.valueOf(request.getData()))
+                .ginasio(Optional.ofNullable(request.getGinasio()))
+                .build());
+    }
+
+    @PostMapping("")
+    public void createShedule(@RequestBody @Valid NewScheduleRequest request) {
+        log.info("Received request for createShedule: {}", request);
+        createSchedule.execute(request.toInput());
+    }
+
+    @PostMapping("/delete")
+    public void deleteSchedule(@RequestBody @Valid DeleteScheduleRequest request) {
+        log.info("Received request for deleteSchedule: {}", request);
+        deleteSchedule.execute(request.toInput());
+    }
+
+    @GetMapping("/{matricula}")
+    public List<ScheduleModel> getUserSchedule(@PathVariable("matricula") String request) {
+        log.info("Received request for getUserSchedule: {}", request);
+        return getUserSchedules.get(request);
+    }
+
+    @GetMapping("/ginasio")
+    public List<GinasioModel> getGinasios() {
+        log.info("Received request for getGinasios");
+        return getGinasios.execute();
+    }
+
+
 }
 </file>
 
@@ -2764,68 +4316,17 @@ public interface DatabasePort {
     Optional<GinasioModel> findGinasioById(String id);
     Optional<ScheduleModel> findScheduleByHorarioAndMounthDayAndGinasio(Time horario, Date monthDay, String ginasio);
     void deleteGinasio(String ginasio);
-    Optional<UserModel> findUserByMatricula(String matricula);
     Optional<RestricaoModel> findRestricaoByGinasioAndData(String ginasio, Date data);
     void saveRestricao(RestricaoModel model);
     void deleteRestricao(RestricaoModel model);
-}
-</file>
-
-<file path="src/main/java/com/schedulecore/ufu/infrasctructure/api/v1/ScheduleController.java">
-package com.schedulecore.ufu.infrasctructure.api.v1;
-
-import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
-import com.schedulecore.ufu.domains.models.ScheduleModel;
-import com.schedulecore.ufu.domains.resourses.schedule.CreateSchedule;
-import com.schedulecore.ufu.domains.resourses.schedule.DeleteSchedule;
-import com.schedulecore.ufu.domains.resourses.schedule.GetSchedules;
-import com.schedulecore.ufu.infrasctructure.api.request.DeleteScheduleRequest;
-import com.schedulecore.ufu.infrasctructure.api.request.NewScheduleRequest;
-import com.schedulecore.ufu.infrasctructure.api.request.ScheduleRequest;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
-
-import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
-
-@RestController
-@RequiredArgsConstructor
-@Slf4j
-@RequestMapping("/v1")
-public class ScheduleController {
-    private final GetSchedules getSchedules;
-    private final CreateSchedule createSchedule;
-    private final DeleteSchedule deleteSchedule;
-
-    @GetMapping("/teste")
-    public String teste() {
-        log.info("Received request for teste endpoint");
-        return "Schedule UFU Core is running";
-    }
-
-    @GetMapping("/schedule")
-    public List<ScheduleModel> getSchedule(@RequestBody ScheduleRequest request) {
-        log.info("Received request for getSchedule: {}", request);
-        return getSchedules.get(GetSchedulesInput.builder()
-                .data(Date.valueOf(request.getData()))
-                .ginasio(Optional.ofNullable(request.getGinasio()))
-                .build());
-    }
-
-    @PostMapping("/schedule")
-    public void createShedule(@RequestBody NewScheduleRequest request) {
-        log.info("Received request for createShedule: {}", request);
-        createSchedule.execute(request.toInput());
-    }
-
-    @PostMapping("/schedule/delete")
-    public void deleteSchedule(@RequestBody DeleteScheduleRequest request) {
-        log.info("Received request for deleteSchedule: {}", request);
-        deleteSchedule.execute(request.toInput());
-    }
-
+    List<GinasioModel> findAllGinasios();
+    List<RestricaoModel> findAllRestricoes();
+    List<ScheduleModel> findUserSchedules(String matricula);
+    List<ScheduleModel> findAllSchedules();
+    Optional<UserModel> findUserByEmail(String email);
+    void saveUserOrUpdateUser(UserModel user);
+    List<UserModel> findAllUsers();
+    void saveUserOrUpdateAdm(UserModel user);
 }
 </file>
 
@@ -2950,7 +4451,7 @@ public class DatabaseAdapter implements DatabasePort {
     @Override
     public Optional<GinasioModel> findGinasioById(String id) {
         log.info("getGinasioById - ginasio by id: {}", id);
-        return ginasioRepository.findById(id).flatMap(GinasioEntity::toModel);
+        return ginasioRepository.findById(id).flatMap(ginasioEntity -> Optional.ofNullable(ginasioEntity.toModel()));
     }
 
     @Override
@@ -2965,13 +4466,6 @@ public class DatabaseAdapter implements DatabasePort {
     public void deleteGinasio(String ginasio) {
         log.info("Deleting ginasio: {}" , ginasio);
        ginasioRepository.deleteById(ginasio);
-    }
-
-    @Override
-    public Optional<UserModel> findUserByMatricula(String matricula) {
-        log.info("findByMatricula - searching user by matricula: {}", matricula);
-        return userRepository.findById(matricula)
-                .map(UserEntity::toModel);
     }
 
     @Override
@@ -3010,6 +4504,99 @@ public class DatabaseAdapter implements DatabasePort {
                 }
         ).orElseThrow(() -> new IllegalArgumentException("Restriction not found for ginasio: " + model.getGinasio() + " and data: " + model.getData()));
     }
+
+    @Override
+    public List<GinasioModel> findAllGinasios() {
+        log.info("findAllGinasios - fetching all ginasios");
+        return ginasioRepository.findAll()
+                .stream()
+                .map(GinasioEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<RestricaoModel> findAllRestricoes() {
+        log.info("findAllRestricoes - fetching all restrictions");
+        return restricaoRepository.findAll()
+                .stream()
+                .map(RestricaoEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<ScheduleModel> findUserSchedules(String matricula) {
+        log.info("findUserSchedules - getting schedules for user with matricula: {}", matricula);
+        return reservaRepository.findByMatriculaAluno(matricula)
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<ScheduleModel> findAllSchedules() {
+        return reservaRepository.findAll()
+                .stream()
+                .map(ReservaEntity::toModel)
+                .toList();
+
+    }
+
+    @Override
+    public Optional<UserModel> findUserByEmail(String email) {
+        log.info("findUserByEmail - searching user by email: {}", email);
+        return userRepository.findById(email)
+                .map(UserEntity::toModel);
+    }
+
+    @Override
+    public void saveUserOrUpdateUser(UserModel user) {
+        log.info("saveUserOrUpdateUser user: {}", user);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setMatricula(user.getMatricula());
+        userEntity.setNome(user.getNome());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setTelefone(user.getTelefone());
+        userEntity.setRole(user.getAcess().name());
+        userRepository.findById(userEntity.getEmail()).ifPresentOrElse(
+                userEntity1 -> {
+                    userEntity1.setMatricula(user.getMatricula());
+                    userEntity1.setNome(user.getNome());
+                    userEntity1.setTelefone(user.getTelefone());
+                    userRepository.deleteById(user.getEmail());
+                    userRepository.save(userEntity1);
+                }, () -> userRepository.save(userEntity)
+        );
+    }
+
+    @Override
+    public List<UserModel> findAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserEntity::toModel)
+                .toList();
+    }
+
+    @Override
+    public void saveUserOrUpdateAdm(UserModel user) {
+        log.info("saveUserOrUpdateAdm user: {}", user);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setMatricula(user.getMatricula());
+        userEntity.setNome(user.getNome());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setTelefone(user.getTelefone());
+        userEntity.setRole(user.getAcess().name());
+        userRepository.findById(userEntity.getEmail()).ifPresentOrElse(
+                userEntity1 -> {
+                    userEntity1.setMatricula(user.getMatricula());
+                    userEntity1.setNome(user.getNome());
+                    userEntity1.setTelefone(user.getTelefone());
+                    userEntity1.setRole(user.getAcess().name());
+                    userRepository.deleteById(user.getEmail());
+                    userRepository.save(userEntity1);
+                }, () -> userRepository.save(userEntity)
+        );
+    }
+
 }
 </file>
 
