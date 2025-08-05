@@ -1,4 +1,4 @@
-package com.schedulecore.ufu.infrasctructure.api.cors;
+package com.schedulecore.ufu.infrasctructure.api.configs.cors;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
