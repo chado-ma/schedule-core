@@ -14,7 +14,7 @@ import java.time.MonthDay;
 @Data
 @Builder
 public class DeleteScheduleRequest {
-    @NotBlank
+    @NotNull
     private Time horario;
     @NotNull
     private LocalDate data;
