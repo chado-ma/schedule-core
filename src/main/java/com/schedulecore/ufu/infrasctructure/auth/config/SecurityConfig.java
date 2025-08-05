@@ -24,6 +24,11 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
                         .requestMatchers("/v1/adm/**").hasRole("ADMIN")
                         .requestMatchers("/v1/schedule/**").authenticated()
                         .requestMatchers("/v1/auth/**").permitAll()
