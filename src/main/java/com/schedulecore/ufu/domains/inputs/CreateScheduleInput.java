@@ -1,7 +1,6 @@
 package com.schedulecore.ufu.domains.inputs;
 
 import com.schedulecore.ufu.domains.models.NewSchedule;
-import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,7 +16,7 @@ public class CreateScheduleInput {
     private String responsavel;
     private String curso;
     private String email;
-    private CampusEnum campus;
+    private String campus;
     private String matriculaAluno;
     private String telefone;
     private Integer quantidadePessoas;

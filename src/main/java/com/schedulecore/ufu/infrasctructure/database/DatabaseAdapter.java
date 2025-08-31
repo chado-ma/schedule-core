@@ -56,7 +56,7 @@ public class DatabaseAdapter implements DatabasePort {
                 model.getGinasio(),
                 model.getResponsavel(),
                 model.getCurso(),
-                model.getCampus().name(),
+                model.getCampus(),
                 model.getMatriculaAluno(),
                 model.getTelefone(),
                 model.getQuantidadePessoas(),

@@ -1,7 +1,6 @@
 package com.schedulecore.ufu.infrasctructure.api.request;
 
 import com.schedulecore.ufu.domains.inputs.CreateScheduleInput;
-import com.schedulecore.ufu.domains.models.enums.CampusEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +8,6 @@ import lombok.Data;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.MonthDay;
 
 @Data
 @Builder
@@ -45,7 +42,7 @@ public class NewScheduleRequest {
                 .responsavel(responsavel)
                 .curso(curso)
                 .email(email)
-                .campus(CampusEnum.valueOf(campus.toUpperCase()))
+                .campus(campus)
                 .matriculaAluno(matriculaAluno)
                 .telefone(telefone)
                 .quantidadePessoas(quantidadePessoas)
