@@ -4,6 +4,7 @@ import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.RestricaoModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.models.UserModel;
+import com.schedulecore.ufu.domains.resourses.auth.GerenateAdm;
 import com.schedulecore.ufu.domains.resourses.auth.GetUsers;
 import com.schedulecore.ufu.domains.resourses.ginasio.CreateOrUpdateGinasio;
 import com.schedulecore.ufu.domains.resourses.ginasio.DeleteGinasio;
@@ -13,6 +14,7 @@ import com.schedulecore.ufu.domains.resourses.restricao.DeleteRestricao;
 import com.schedulecore.ufu.domains.resourses.restricao.GetRestricoes;
 import com.schedulecore.ufu.domains.resourses.schedule.GetAllSchedules;
 import com.schedulecore.ufu.infrasctructure.api.request.CreateGinasioRequest;
+import com.schedulecore.ufu.infrasctructure.api.request.GerenateAdmRequest;
 import com.schedulecore.ufu.infrasctructure.api.request.RestricaoRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,7 @@ public class AdmController {
     private final GetRestricoes getRestricoes;
     private final GetAllSchedules getAllSchedules;
     private final GetUsers getUsers;
+    private final GerenateAdm gerenateAdm;
 
     @PostMapping("/ginasio")
     public void createOrUpdateGinasio(@RequestBody @Valid CreateGinasioRequest request) {
@@ -75,4 +78,9 @@ public class AdmController {
         deleteRestricao.execute(request.toInput());
     }
 
+    @PostMapping("/user")
+    public void createAdm(@RequestBody @Valid GerenateAdmRequest request) {
+        log.info("Received request for createAdm: {}", request);
+        gerenateAdm.execute(request.toUserModel());
+    }
 }
