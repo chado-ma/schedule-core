@@ -1,7 +1,7 @@
-package com.schedule.ufu.usecases;
+package com.schedule.ufu.usecases.auth;
 
 import com.schedule.ufu.fixtures.inputs.GetSchedulesInputFixture;
-import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;
+/*import com.schedulecore.ufu.domains.inputs.GetSchedulesInput;*/
 import com.schedulecore.ufu.domains.models.GinasioModel;
 import com.schedulecore.ufu.domains.models.ScheduleModel;
 import com.schedulecore.ufu.domains.ports.DatabasePort;
