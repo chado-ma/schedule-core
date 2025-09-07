@@ -1,159 +1,163 @@
-
-# Schedule-Core UFU
+# Schedule-Core UFU (Backend)
 
 ## 🎯 Sobre o Projeto
+**Schedule-Core** é o servidor backend da plataforma de **agendamento de espaços esportivos** da UFU.
+Centraliza a consulta de horários, criação/cancelamento de reservas e administração de ginásios, reduzindo trabalho manual e conflitos de agenda.
+Porta padrão da API: **3000**.
 
-**Schedule-Core** é o backend da plataforma de agendamento de espaços esportivos para a Universidade Federal de Uberlândia (UFU). O projeto foi desenvolvido com o objetivo de modernizar e automatizar o processo de reserva de ginásios e quadras, que antes era realizado de forma manual e burocrática.
+---
 
-A aplicação centraliza a consulta de horários e a realização de agendamentos, reduzindo a carga de trabalho administrativo e prevenindo conflitos de horários.
+## ✨ Funcionalidades
+- **Gestão de agendamentos**: criar, listar por data/usuário e cancelar.
+- **Administração**: CRUD de ginásios e restrições (feriados/eventos).
+- **Validações de negócio** (Chain of Responsibility): evita duplicidade, respeita restrições e horários válidos.
+- **Notificações por e-mail** (ex.: cancelamento).
 
-## ✨ Funcionalidades Principais
+---
 
-  * **Gestão de Agendamentos:**
-      * Criar, consultar e cancelar agendamentos.
-      * Listar todos os agendamentos de um usuário específico.
-      * Visualizar a grade de horários por dia e por ginásio.
-  * **Administração de Espaços:**
-      * Cadastrar e remover ginásios e outros espaços esportivos.
-      * Definir restrições de datas (ex: feriados, eventos) para impedir agendamentos.
-  * **Notificações:**
-      * Envio de e-mails automáticos para confirmar o cancelamento de uma reserva.
-  * **Validação de Regras de Negócio:**
-      * Utiliza uma cadeia de validações (Chain of Responsibility) para garantir a integridade dos agendamentos, verificando duplicidade, restrições de data, horário de funcionamento do ginásio e outros.
+## 🏗️ Arquitetura (Hexagonal / Ports & Adapters)
+- **Domínio (`domains/`)**: regras de negócio e **ports** (interfaces) limpas.
+- **Infrastructure (`infrasctructure/`)**: adapters REST, banco, e-mail, segurança.
 
-## 🔐 Autenticação e Autorização (JWT + Spring Security)
+Principais pacotes:
+- **Controllers** (`infrasctructure/api/v1`), **Auth** (JWT), **Database** (JPA + Postgres), **EmailSender**, **ErrorHandler**.
 
-A API utiliza autenticação via **JWT (JSON Web Token)** combinada com **Spring Security**, com as seguintes características:
+---
 
-- **Login e Geração de Token:**
-  - O endpoint `/auth/token` permite autenticação de usuários cadastrados e retorna um JWT assinado com SHA-256.
-  - O token contém claims como `matricula`, `email`, `name` e `role`, com validade de 2 horas.
+## 🔐 Autenticação & Autorização (JWT + Spring Security)
+- **Fluxo**: login por e-mail institucional → código → geração de **JWT** com claims (`matricula`, `email`, `name`, `role`) e validade de ~2h.
+- **Assinatura**: HMAC derivado de **SHA-256 do e-mail institucional**.
 
-- **Proteção de Rotas:**
-  - Endpoints públicos: `/auth/**`
-  - Endpoints autenticados: `/v1/schedule/**`
-  - Endpoints restritos ao papel `ADMIN`: `/v1/adm/**`
+### Proteção de rotas
+- Público: `/v3/api-docs/**`, `/swagger-ui/**`, `/swagger-ui.html`, e endpoints de auth.
+- Autenticado: `/v1/schedule/**`
+- Somente **ADMIN**: `/v1/adm/**`
 
-- **Validação de Token:**
-  - Tokens são validados via filtro personalizado (`JwtAuthenticationFilter`) usando `java-jwt` (Auth0).
-  - A assinatura é feita com base em um hash SHA-256 do e-mail institucional (`spring.mail.username`), aumentando a segurança.
+### Endpoints de Autenticação
 
-- **Criação Automática de Administrador:**
-  - Ao iniciar a aplicação, um usuário administrador é criado automaticamente caso ainda não exista no banco. O e-mail é definido em `spring.mail.username` e recebe o papel `ADMIN`.
+| Método | Rota           | Descrição                                         |
+|--------|----------------|---------------------------------------------------|
+| POST   | `/auth/email`  | Envia código de verificação para e-mail `@ufu.br`.|
+| POST   | `/auth/verify` | Valida o código e retorna JWT.                    |
+| POST   | `/auth/token`  | Renovação de token para e-mail já registrado.     |
+| GET    | `/auth/user`   | Dados do usuário autenticado (via Bearer).        |
 
-### Endpoints de Autenticação (`/auth`)
-
-| Método | Rota           | Descrição |
-|--------|----------------|-----------|
-| `POST` | `/auth/email`  | Envia um código de verificação para o e-mail institucional informado. |
-| `POST` | `/auth/verify` | Valida o código enviado por e-mail e cria/atualiza o usuário. Retorna um JWT válido. |
-| `POST` | `/auth/token`  | Gera um novo JWT para um usuário já registrado com e-mail `@ufu.br`. |
-| `GET`  | `/auth/user`   | Retorna os dados do usuário autenticado com base no token enviado no header. |
-
-#### 🔐 Fluxo completo de autenticação:
-
-1. O usuário envia seu e-mail institucional no endpoint `/auth/email`:
+**Exemplo de fluxo:**
 ```json
+POST /auth/email
 { "email": "usuario@ufu.br" }
-```
-2. O usuário recebe um código por e-mail e o envia para `/auth/verify`:
-```json
+
+POST /auth/verify
 { "email": "usuario@ufu.br", "codigo": "123456" }
 ```
-3. O sistema retorna um token JWT válido. Para renovar, o usuário pode usar `/auth/token`:
-```json
-{ "email": "usuario@ufu.br" }
-```
-4. Para consultar dados do usuário autenticado:
-```
-GET /auth/user
-Authorization: Bearer <token>
-```
 
-## 🛠️ Tecnologias Utilizadas
+---
 
-  * **Backend:** Java 17, Spring Boot 3.5.0
-  * **Segurança:** Spring Security, Auth0 Java JWT
-  * **Banco de Dados:** PostgreSQL
-  * **Gerenciador de Dependências:** Maven
-  * **Containerização:** Docker (via `docker-compose.yml`)
-
-## 🏗️ Arquitetura: Ports and Adapters (Hexagonal)
-
-O projeto foi estruturado seguindo o padrão de **Arquitetura Hexagonal**, que isola a lógica de negócio de dependências externas e facilita a manutenção e testabilidade do sistema.
-
-  * **Hexágono (Core do Domínio):**
-      * Localizado no pacote `domains`, contém a lógica de negócio pura e agnóstica a tecnologias.
-      * **`ports`**: Define as interfaces (Portas) que o domínio usa para se comunicar com o mundo exterior.
-
-  * **Adaptadores (Infrastructure):**
-      * O pacote `infrasctructure` contém as implementações concretas das portas.
-      * **Inbound:** Controllers REST (ex: `ScheduleController`).
-      * **Outbound:** Banco de dados, e-mail, etc.
-
-## 🧪 Testes
-
-Atualmente, o projeto **não possui uma suíte de testes unitários ou de integração automatizados**.
-
-Os testes funcionais da API são realizados através da collection do **Insomnia**, que pode ser encontrada no arquivo: `src/test/Insomnia_2025-07-10.yaml`. Esta collection contém requisições prontas para todos os endpoints da aplicação, facilitando a validação manual do comportamento esperado.
-
-## 🗺️ API Endpoints
-
-A API está versionada sob o prefixo `/v1`. Abaixo estão os endpoints principais.
+## 🗺️ API Endpoints principais (/v1)
 
 ### Agendamentos (`/v1/schedule`)
 
-| Método | Rota | Descrição |
-| :--- | :--- | :--- |
-| `GET` | `/schedule` | Busca horários disponíveis e agendados para uma data. |
-| `POST` | `/schedule` | Cria um novo agendamento. |
-| `POST` | `/schedule/delete` | Cancela um agendamento existente. |
-| `GET` | `/schedule/{matricula}` | Retorna todos os agendamentos de um usuário. |
+| Método | Rota                | Descrição                                 |
+|--------|---------------------|-------------------------------------------|
+| GET    | /schedule           | Busca horários disponíveis/agendados por data. |
+| POST   | /schedule           | Cria novo agendamento.                    |
+| POST   | /schedule/delete    | Cancela um agendamento.                   |
+| GET    | /schedule/{matricula}| Lista agendamentos do usuário.           |
 
 ### Administração (`/v1/adm`)
 
-| Método | Rota | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/ginasio` | Cria ou atualiza um ginásio. |
-| `GET` | `/ginasio` | Lista todos os ginásios. |
-| `POST` | `/ginasio/delete/{id}` | Remove um ginásio. |
-| `POST` | `/restricao` | Adiciona uma restrição de data em um ginásio. |
-| `GET` | `/restricao` | Lista todas as restrições. |
-| `GET` | `/schedule` | Lista todos os agendamentos do sistema. |
+| Método | Rota                  | Descrição                        |
+|--------|-----------------------|----------------------------------|
+| POST   | /ginasio              | Cria/atualiza ginásio.           |
+| GET    | /ginasio              | Lista ginásios.                  |
+| POST   | /ginasio/delete/{id}  | Remove ginásio.                  |
+| POST   | /restricao            | Cria restrição de data por ginásio. |
+| GET    | /restricao            | Lista restrições.                |
+| GET    | /schedule             | Lista todos os agendamentos.     |
 
-## 🚀 Como Executar o Projeto
+---
+
+## ⚙️ Configuração & Execução
 
 ### Pré-requisitos
 
-  * [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) ou superior
-  * [Apache Maven](https://maven.apache.org/download.cgi)
-  * [Docker](https://www.docker.com/products/docker-desktop/) e Docker Compose
+- Java 17+
+- Maven
+- Docker + Docker Compose
 
-### Passos
+### Variáveis/Propriedades de E-mail
 
-1. **Clone o repositório:**
-```bash
-git clone https://github.com/chado-ma/schedule-core.git
-cd schedule-core
-```
+- `spring.mail.username` (obrigatório): e-mail institucional (define From, seed do JWT e o ADMIN inicial).
+- `spring.mail.password`: senha.
+- SMTP: `smtp.office365.com:587` (TLS).
 
-2. **Inicie o banco de dados com Docker:**
-```bash
+### Perfis de Execução
+
+**localdb** (Postgres local na 5432):
+`spring.datasource.url=jdbc:postgresql://localhost:5432/SCHEDULEDB` (user/pass: user/user)
+
+**docker** (Postgres do docker-compose na 5555):
+`spring.datasource.url=jdbc:postgresql://localhost:5555/SCHEDULEDB` (user/pass: user/user)
+
+A API roda por padrão na porta 3000.
+
+#### Subindo tudo com Docker (recomendado)
+```sh
 docker-compose up -d
+mvn spring-boot:run -Dspring-boot.run.profiles=docker
 ```
 
-3. **Configure as variáveis de ambiente:**
-- `spring.mail.username`: E-mail institucional do administrador (também usado para assinar tokens).
-- `spring.mail.password`: Senha do e-mail.
-
-4. **Execute a aplicação:**
-```bash
-mvn spring-boot:run
+#### Execução local (banco próprio)
+```sh
+# 1) Garanta Postgres local rodando (SCHEDULEDB / user:user)
+# 2) Rode a aplicação apontando para o perfil localdb
+mvn spring-boot:run -Dspring-boot.run.profiles=localdb
 ```
 
-A aplicação estará disponível em `http://localhost:3000`.
+---
 
-## 👨‍💻 Autor
+## 📘 Documentação interativa (Swagger/OpenAPI)
 
-  * **Gabriel Rezende Machado**
+- Swagger UI: `/swagger-ui/index.html`
+- OpenAPI JSON: `/v3/api-docs`
 
+---
+
+## 🧪 Testes manuais (Insomnia)
+
+Há uma collection do Insomnia pronta em `src/test/Insomnia_2025-07-21.yaml` com requests de todos os endpoints.
+
+Dica: a collection usa `localhost:3000` nas URLs.
+
+---
+
+## 🧱 Persistência (JPA / Postgres)
+
+Entidades principais: User, Ginasio, Restricao, Reserva.
+
+---
+
+## 📨 Envio de E-mail
+
+`EmailSenderAdapter` usa `JavaMailSender` (From = `spring.mail.username`) para enviar código de autenticação e notificação de cancelamento.
+
+---
+
+## 🛡️ Tratamento de Erros
+
+`ErrorHandler` (`ControllerAdvice`) padroniza respostas para 400 e 401, além de log estruturado.
+
+---
+
+## 📂 Estrutura do Repositório (resumo)
+
+- `src/main/java/com/schedulecore/ufu/...` – domínio, adapters (API/Auth/DB/Email), config de segurança e error handler.
+- `src/main/resources/` – application.yml, perfis application-localdb.yml e application-docker.yml.
+- `src/test/Insomnia_2025-07-21.yaml` – collection Insomnia.
+
+---
+
+## 👤 Autor
+
+Gabriel Rezende Machado
+- LinkedIn: [https://www.linkedin.com/in/gabriel-rezende-machado-920b18183/](https://www.linkedin.com/in/gabriel-rezende-machado-920b18183/)
